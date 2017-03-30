@@ -57,25 +57,24 @@
          </font>
       </Label>
  
-      <PasswordField id="password" promptText="Password" GridPane.columnIndex="5" GridPane.rowIndex="5" />
-      <Button id="signinButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="216.0" style="-fx-border-color: #BDBDBD;" text="Sign In" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
-      <Button id="registerButton" layoutX="404.0" layoutY="332.0" mnemonicParsing="false" style="-fx-border-color: #BDBDBD;" text="Sign Up" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.rowIndex="7" />
+      <PasswordField fx:id="passwordInput" promptText="Password" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+      <Button fx:id="signinButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="216.0" style="-fx-border-color: #BDBDBD;" text="Sign In" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+      <Button fx:id="signupButton" layoutX="404.0" layoutY="332.0" mnemonicParsing="false" style="-fx-border-color: #BDBDBD;" text="Sign Up" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.rowIndex="7" />
       <Label prefHeight="17.0" prefWidth="180.0" text="Don't Have an Account? " GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="7">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField id="userName" promptText="User Name" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+      <TextField fx:id="userNameInput" promptText="User Name" GridPane.columnIndex="5" GridPane.rowIndex="4" />
       <Label alignment="TOP_RIGHT" text="Sign in as: " GridPane.columnIndex="4" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
       <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0097A7;" GridPane.columnIndex="1" GridPane.rowSpan="2147483647" />
-      <ChoiceBox prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+      <ChoiceBox fx:id="typeChoiceBox" prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="3" />
    </children>
    <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
    </padding>
 </GridPane>
-
