@@ -59,7 +59,7 @@
  
       <PasswordField fx:id="passwordInput" promptText="Password" GridPane.columnIndex="5" GridPane.rowIndex="5" />
       <Button fx:id="signinButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="216.0" style="-fx-border-color: #BDBDBD;" text="Sign In" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
-      <Button fx:id="signupButton" layoutX="404.0" layoutY="332.0" mnemonicParsing="false" style="-fx-border-color: #BDBDBD;" text="Sign Up" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.rowIndex="7" />
+      <Button fx:id="signupButton" layoutX="404.0" layoutY="332.0" mnemonicParsing="false" onAction="#signupButtonAction" style="-fx-border-color: #BDBDBD;" text="Sign Up" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.rowIndex="7" />
       <Label prefHeight="17.0" prefWidth="180.0" text="Don't Have an Account? " GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="7">
          <font>
             <Font size="15.0" />
