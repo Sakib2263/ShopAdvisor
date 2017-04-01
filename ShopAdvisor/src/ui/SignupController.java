@@ -3,6 +3,7 @@ package ui;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -23,7 +24,7 @@ public class SignupController implements Initializable {
     @FXML
     private TextField userNameInput;
     @FXML
-    private ChoiceBox<?> typeChoiceBox;
+    private ChoiceBox typeChoiceBox;
     @FXML
     private TextField fullNameInput;
     @FXML
@@ -36,7 +37,8 @@ public class SignupController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        typeChoiceBox.setItems(FXCollections.observableArrayList("Buyer", "Seller"));
+        typeChoiceBox.setValue("Buyer");
     }    
     
 }

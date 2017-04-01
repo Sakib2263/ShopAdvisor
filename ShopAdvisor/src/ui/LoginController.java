@@ -3,6 +3,7 @@ package ui;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,7 +30,7 @@ public class LoginController implements Initializable {
     @FXML
     private TextField userNameInput;
     @FXML
-    private ChoiceBox<?> typeChoiceBox;
+    private ChoiceBox typeChoiceBox;
     
     @FXML
     private void signupButtonAction(ActionEvent event) throws IOException{
@@ -46,7 +47,8 @@ public class LoginController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        typeChoiceBox.setItems(FXCollections.observableArrayList("Buyer", "Seller"));
+        typeChoiceBox.setValue("Buyer");
     }    
     
 }
