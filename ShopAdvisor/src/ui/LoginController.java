@@ -31,15 +31,34 @@ public class LoginController implements Initializable {
     private TextField userNameInput;
     @FXML
     private ChoiceBox typeChoiceBox;
-    
+
     @FXML
-    private void signupButtonAction(ActionEvent event) throws IOException{
+    private void signupButtonAction(ActionEvent event) throws IOException {
         Parent signupParent = FXMLLoader.load(getClass().getResource("signup.fxml"));
         Scene signupScene = new Scene(signupParent);
-        Stage signupStage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        Stage signupStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         signupStage.setScene(signupScene);
         signupStage.show();
-        
+
+    }
+
+    boolean isAuthenticated() {
+        return true; //to be implemented later
+    }
+
+    @FXML
+    private void loginButtonAction(ActionEvent event) throws IOException {
+        if (isAuthenticated()) {
+            Parent customerUIParent = FXMLLoader.load(getClass().getResource("customerUI.fxml"));
+            Scene customerUIScene = new Scene(customerUIParent);
+            Stage customerUIStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            customerUIStage.setScene(customerUIScene);
+            customerUIStage.show();
+        }
+        else{
+            //to be implemented later show an error
+        }
+
     }
 
     /**
@@ -49,6 +68,6 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         typeChoiceBox.setItems(FXCollections.observableArrayList("Buyer", "Seller"));
         typeChoiceBox.setValue("Buyer");
-    }    
-    
+    }
+
 }
