@@ -20,7 +20,7 @@
          <children>
             <Button fx:id="hamburger_l" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#hidePane" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: rgba(0,0,0,0);">
                <graphic>
-                  <ImageView fitHeight="52.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="33.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/icon/menu_icon.png" />
                      </image>
@@ -74,7 +74,7 @@
                <children>
                   <Button fx:id="hamburger_r" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showPane" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: rgba(0,0,0,0);">
                      <graphic>
-                        <ImageView fx:id="hamburger_l1" fitHeight="52.0" fitWidth="101.0" onDragDetected="#hidePane" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="hamburger_l1" fitHeight="33.0" fitWidth="36.0" onDragDetected="#hidePane" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../assets/icon/menu_icon.png" />
                            </image>
