@@ -59,10 +59,12 @@
             <Font size="40.0" />
          </font>
       </Label>
+      <TextField fx:id="fullNameInput" layoutX="309.0" layoutY="275.0" promptText="Full Name" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+      <TextField fx:id="userNameInput" promptText="User Name" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+      <TextField fx:id="emailInput" promptText="Email" GridPane.columnIndex="5" GridPane.rowIndex="6" />
  
       <PasswordField fx:id="passwordInput" promptText="Password" GridPane.columnIndex="5" GridPane.rowIndex="7" />
       <Button fx:id="registerButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="216.0" style="-fx-border-color: #BDBDBD;" text="Register" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
-      <TextField fx:id="userNameInput" promptText="User Name" GridPane.columnIndex="5" GridPane.rowIndex="5" />
       <Label alignment="TOP_RIGHT" text="Sign up as: " GridPane.columnIndex="4" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
          <font>
             <Font size="15.0" />
@@ -86,8 +88,6 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="fullNameInput" layoutX="309.0" layoutY="275.0" promptText="Full Name" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-      <TextField fx:id="emailInput" promptText="Email" GridPane.columnIndex="5" GridPane.rowIndex="6" />
       <TextField fx:id="addressInput" promptText="Address" GridPane.columnIndex="5" GridPane.rowIndex="8" />
    </children>
    <padding>

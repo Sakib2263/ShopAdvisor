@@ -9,10 +9,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 /**
@@ -43,7 +41,7 @@ public class LoginController implements Initializable {
     }
 
     boolean isAuthenticated() {
-        return true; //to be implemented later
+        return false; //to be implemented later
     }
 
     @FXML
@@ -53,14 +51,20 @@ public class LoginController implements Initializable {
             Scene customerUIScene = new Scene(customerUIParent);
             Stage customerUIStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             customerUIStage.setScene(customerUIScene);
+            customerUIStage.centerOnScreen();
             customerUIStage.show();
         }
         else{
             //to be implemented later show an error
+            Alert alert = new Alert(AlertType.ERROR, "Wrong Username or Password, Try again?");
+            alert.setTitle("Authentication Error");
+            alert.setHeaderText("Sign in failed :(");
+            alert.setGraphic(null);
+            alert.show();
         }
 
     }
-
+    
     /**
      * Initializes the controller class.
      */
