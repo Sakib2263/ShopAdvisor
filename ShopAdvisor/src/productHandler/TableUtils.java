@@ -1,4 +1,4 @@
-package Seller_editor;
+package productHandler;
 
 import java.text.NumberFormat;
 import java.text.ParseException;

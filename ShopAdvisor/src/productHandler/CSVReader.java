@@ -1,4 +1,4 @@
-package Seller_editor;
+package productHandler;
 
 //Reads a Comma Separated Value file and prints its contents.
 import java.io.*;

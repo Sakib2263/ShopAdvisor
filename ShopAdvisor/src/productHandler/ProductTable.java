@@ -1,4 +1,4 @@
-package Seller_editor;
+package productHandler;
 
 import javafx.application.Application;
 import javafx.beans.property.DoubleProperty;

@@ -1,10 +1,12 @@
-package Seller_editor;
+package productHandler;
 
 public class Product {
 
     private String name;
     private double price;
     private int quantity;
+    private String seller;
+    private int id;
 
     public Product(){
         this.name = "";
@@ -17,6 +19,13 @@ public class Product {
         this.price = price;
         this.quantity = quantity;
     }
+
+    public Product(String name, double price, String seller) {
+        this.name = name;
+        this.price = price;
+        this.seller = seller;
+    }
+    
 
     public String getName() {
         return name;
