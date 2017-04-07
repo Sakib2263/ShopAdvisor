@@ -58,13 +58,24 @@ public class LoginController implements Initializable {
     @FXML
     private void loginButtonAction(ActionEvent event) throws IOException {
         if (isAuthenticated()) {
+            if(typeChoiceBox.getValue().equals("Buyer")){
             Parent customerUIParent = FXMLLoader.load(getClass().getResource("customerUI.fxml"));
             Scene customerUIScene = new Scene(customerUIParent);
             Stage customerUIStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             customerUIStage.setScene(customerUIScene);
             customerUIStage.centerOnScreen();
             customerUIStage.show();
-        }
+            }
+            else if(typeChoiceBox.getValue().equals("Seller")){
+            Parent SellerUIParent = FXMLLoader.load(getClass().getResource("SellerUI.fxml"));
+            Scene SellererUIScene = new Scene(SellerUIParent);
+            Stage SellererUIStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            SellererUIStage.setScene(SellererUIScene);
+            SellererUIStage.centerOnScreen();
+            SellererUIStage.show();
+            }
+            }
+        
         else{
             //to be implemented later show an error
             Alert alert = new Alert(AlertType.ERROR, "Wrong Username or Password, Try again?");
