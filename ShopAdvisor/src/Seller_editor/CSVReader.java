@@ -8,8 +8,7 @@ public class CSVReader{
 
 public static void main(String[] arg) throws Exception {
 
-BufferedReader CSVFile = 
-new BufferedReader(new FileReader("Example.csv"));
+BufferedReader CSVFile = new BufferedReader(new FileReader("src/Seller_editor/Example.csv"));
 
 String dataRow = CSVFile.readLine(); // Read first line.
 // The while checks to see if the data is null. If it is, we've hit the end of the file. If not,processes the data.
