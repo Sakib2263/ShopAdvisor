@@ -34,8 +34,8 @@ public class LoginController implements Initializable {
     @FXML
     private ImageView bag;
 
-    dataMap customerInfo = new dataMap("customer.txt");
-    dataMap salerInfo = new dataMap("sales.txt");
+    static dataMap customerInfo = new dataMap("customer.txt");
+    static dataMap salerInfo = new dataMap("sales.txt");
 
     @FXML
     private void signupButtonAction(ActionEvent event) throws IOException {

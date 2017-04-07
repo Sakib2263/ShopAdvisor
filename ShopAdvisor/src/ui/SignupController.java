@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import data.*;
 
 /**
  * FXML Controller class
@@ -34,9 +35,10 @@ public class SignupController implements Initializable {
     private TextField emailInput;
     @FXML
     private TextField addressInput;
-
+  
     @FXML
     private void registerButtonAction(ActionEvent event) throws IOException {
+        registerUser();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Please sign in");
         alert.setTitle("Registration");
         alert.setHeaderText("Registration Successful");
@@ -51,7 +53,31 @@ public class SignupController implements Initializable {
         }
 
     }
-
+    
+    private void registerUser(){
+        FileOperations fop = new FileOperations();
+        String file;
+        if (typeChoiceBox.getValue().equals("Buyer")){
+            file = "customer.txt";
+        }
+        else{
+            file = "sales.txt";
+        }
+        String usrnm = userNameInput.getText();
+        String pass = passwordInput.getText();
+        if(isUniqueUser(usrnm,pass)){
+            fop.addRecord(file, usrnm, pass);
+            LoginController.customerInfo.updateMap(usrnm, pass);
+        }
+        
+    }
+    private boolean isUniqueUser(String usrnm,String pass){
+        if(LoginController.customerInfo.recordMap.containsKey(usrnm)){
+            System.out.println("Username not unique");
+            return false;
+        }
+        return true;
+    }
     /**
      * Initializes the controller class.
      */

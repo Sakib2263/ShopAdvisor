@@ -37,7 +37,7 @@ public class dataMap {
     }
     
     public void updateMap(String record1, String record2){
-        recordMap.put(record2, record2);
+        recordMap.put(record1, record2);
     }
     
 }
