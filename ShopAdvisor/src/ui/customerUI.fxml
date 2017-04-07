@@ -86,17 +86,18 @@
                   </Button>
                   <StackPane prefHeight="150.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="187.0" fitWidth="209.0" nodeOrientation="INHERIT" opacity="0.72" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../assets/icon/customer.png" />
-                           </image></ImageView>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hello !!" wrappingWidth="179.20556640625" StackPane.alignment="TOP_CENTER">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to ShopAdvisor!" wrappingWidth="441.20556640625" StackPane.alignment="TOP_CENTER">
                            <font>
                               <Font size="36.0" />
                            </font>
                         </Text>
                      </children>
                   </StackPane>
+                  <ImageView fitHeight="192.0" fitWidth="187.0" nodeOrientation="INHERIT" opacity="0.72" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/icon/customer.png" />
+                     </image>
+                  </ImageView>
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
