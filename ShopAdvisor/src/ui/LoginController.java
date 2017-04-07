@@ -33,10 +33,10 @@ public class LoginController implements Initializable {
     private ChoiceBox typeChoiceBox;
     @FXML
     private ImageView bag;
-    
+
     dataMap customerInfo = new dataMap("customer.txt");
     dataMap salerInfo = new dataMap("sales.txt");
-    
+
     @FXML
     private void signupButtonAction(ActionEvent event) throws IOException {
         Parent signupParent = FXMLLoader.load(getClass().getResource("signup.fxml"));
@@ -49,34 +49,36 @@ public class LoginController implements Initializable {
 
     boolean isAuthenticated() {
         String user = userNameInput.getText();
-        if(typeChoiceBox.getValue().equals("Seller")){
+        if (typeChoiceBox.getValue().equals("Seller")) {
             return passwordInput.getText().equals(salerInfo.recordMap.get(user));
-        }
+<<<<<<< HEAD
+        }else
         return passwordInput.getText().equals(customerInfo.recordMap.get(user)); 
+=======
+        }
+        return passwordInput.getText().equals(customerInfo.recordMap.get(user));
+>>>>>>> origin/beta1
     }
 
     @FXML
     private void loginButtonAction(ActionEvent event) throws IOException {
         if (isAuthenticated()) {
-            if(typeChoiceBox.getValue().equals("Buyer")){
-            Parent customerUIParent = FXMLLoader.load(getClass().getResource("customerUI.fxml"));
-            Scene customerUIScene = new Scene(customerUIParent);
-            Stage customerUIStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            customerUIStage.setScene(customerUIScene);
-            customerUIStage.centerOnScreen();
-            customerUIStage.show();
+            if (typeChoiceBox.getValue().equals("Buyer")) {
+                Parent customerUIParent = FXMLLoader.load(getClass().getResource("customerUI.fxml"));
+                Scene customerUIScene = new Scene(customerUIParent);
+                Stage customerUIStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                customerUIStage.setScene(customerUIScene);
+                customerUIStage.centerOnScreen();
+                customerUIStage.show();
+            } else if (typeChoiceBox.getValue().equals("Seller")) {
+                Parent SellerUIParent = FXMLLoader.load(getClass().getResource("SellerUI.fxml"));
+                Scene SellererUIScene = new Scene(SellerUIParent);
+                Stage SellererUIStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                SellererUIStage.setScene(SellererUIScene);
+                SellererUIStage.centerOnScreen();
+                SellererUIStage.show();
             }
-            else if(typeChoiceBox.getValue().equals("Seller")){
-            Parent SellerUIParent = FXMLLoader.load(getClass().getResource("SellerUI.fxml"));
-            Scene SellererUIScene = new Scene(SellerUIParent);
-            Stage SellererUIStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            SellererUIStage.setScene(SellererUIScene);
-            SellererUIStage.centerOnScreen();
-            SellererUIStage.show();
-            }
-            }
-        
-        else{
+        } else {
             //to be implemented later show an error
             Alert alert = new Alert(AlertType.ERROR, "Wrong Username or Password, Try again?");
             alert.setTitle("Authentication Error");
@@ -86,7 +88,7 @@ public class LoginController implements Initializable {
         }
 
     }
-    
+
     /**
      * Initializes the controller class.
      */
@@ -95,7 +97,7 @@ public class LoginController implements Initializable {
         typeChoiceBox.setItems(FXCollections.observableArrayList("Buyer", "Seller"));
         typeChoiceBox.setValue("Buyer");
         AnimationThread t = new AnimationThread(bag);
-    	t.start();
+        t.start();
     }
 
 }
