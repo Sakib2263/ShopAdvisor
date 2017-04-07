@@ -51,14 +51,10 @@ public class LoginController implements Initializable {
         String user = userNameInput.getText();
         if (typeChoiceBox.getValue().equals("Seller")) {
             return passwordInput.getText().equals(salerInfo.recordMap.get(user));
-<<<<<<< HEAD
         }else
         return passwordInput.getText().equals(customerInfo.recordMap.get(user)); 
-=======
         }
-        return passwordInput.getText().equals(customerInfo.recordMap.get(user));
->>>>>>> origin/beta1
-    }
+    
 
     @FXML
     private void loginButtonAction(ActionEvent event) throws IOException {
@@ -86,7 +82,6 @@ public class LoginController implements Initializable {
             alert.setGraphic(null);
             alert.show();
         }
-
     }
 
     /**
