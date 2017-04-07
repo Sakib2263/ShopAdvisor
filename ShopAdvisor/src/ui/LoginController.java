@@ -11,7 +11,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import data.*;
 
 /**
  * FXML Controller class
@@ -29,7 +31,12 @@ public class LoginController implements Initializable {
     private TextField userNameInput;
     @FXML
     private ChoiceBox typeChoiceBox;
-
+    @FXML
+    private ImageView bag;
+    
+    dataMap customerInfo = new dataMap("customer.txt");
+    dataMap salerInfo = new dataMap("sales.txt");
+    
     @FXML
     private void signupButtonAction(ActionEvent event) throws IOException {
         Parent signupParent = FXMLLoader.load(getClass().getResource("signup.fxml"));
@@ -41,7 +48,11 @@ public class LoginController implements Initializable {
     }
 
     boolean isAuthenticated() {
-        return false; //to be implemented later
+        String user = userNameInput.getText();
+        if(typeChoiceBox.getValue().equals("Seller")){
+            return passwordInput.getText().equals(salerInfo.recordMap.get(user));
+        }
+        return passwordInput.getText().equals(customerInfo.recordMap.get(user)); 
     }
 
     @FXML
@@ -72,6 +83,8 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         typeChoiceBox.setItems(FXCollections.observableArrayList("Buyer", "Seller"));
         typeChoiceBox.setValue("Buyer");
+        AnimationThread t = new AnimationThread(bag);
+    	t.start();
     }
 
 }

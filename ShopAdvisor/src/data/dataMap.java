@@ -12,8 +12,12 @@ public class dataMap {
     public dataMap(){
         recordMap = new HashMap<>();
     }
+    public dataMap(String fileName){
+        recordMap = new HashMap<>();
+        loadMap(fileName);
+    }
     
-    public void loadMap(String fileName) {
+    public final void loadMap(String fileName) {
         
         try {
             FileReader fr = new FileReader("data/" + fileName);
@@ -22,6 +26,7 @@ public class dataMap {
             while(sc.hasNext()){
                 String temp = sc.nextLine();
                 holder = temp.split(" ");
+                if(holder.length != 2) continue;
                 recordMap.put(holder[0], holder[1]);
                 
             }
