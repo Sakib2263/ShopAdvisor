@@ -22,8 +22,8 @@ public class ProductTableMaker {
             if (dataArray.length != 2) {
                 continue;
             }
-            System.out.println(dataArray[0] + " " + dataArray[1]);
-                products.add(new Product(dataArray[0], Double.parseDouble(dataArray[1])));
+            //System.out.println(dataArray[0] + " " + dataArray[1]);
+            products.add(new Product(dataArray[0], Double.parseDouble(dataArray[1])));
         }
 
         return products;

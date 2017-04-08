@@ -4,10 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Comparator;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -36,13 +33,13 @@ public class CustomerUIController implements Initializable {
     private Button hamburger_r;
 
     @FXML
-    private TableView<Product> table1;
+    private TableView<Product> table11;
 
     @FXML
-    private TableColumn<Product, String> storeColumn;
+    private TableColumn<Product, String> storeColumn11;
 
     @FXML
-    private TableColumn<Product, Double> priceColumn;
+    private TableColumn<Product, Double> priceColumn11;
 
     @FXML
     private void hidePane(ActionEvent event) throws IOException {
@@ -60,18 +57,7 @@ public class CustomerUIController implements Initializable {
 
     }
 
-    private void initializeColumns() {
-        storeColumn.setCellValueFactory(new PropertyValueFactory<>("store"));
-        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
-    }
-
-    private void initializeData() {
-        ObservableList<Product> tableContent;
-        try {
-            tableContent = ProductTableMaker.getProduct("product1.csv");
-            //tableContent.sort(Comparator.naturalOrder());
-            storeColumn.setSortable(false);
-            Comparator<? super Product> priceComparator = new Comparator<Product>() {
+    Comparator<? super Product> priceComparator = new Comparator<Product>() {
                 @Override
                 public int compare(Product o1, Product o2) {
                     if(o1.getPrice()> o2.getPrice()){
@@ -80,8 +66,19 @@ public class CustomerUIController implements Initializable {
                     return -1;
                 }
             };
+    
+    private void initializeColumns(TableColumn<Product, String> storeColumn,TableColumn<Product, Double> priceColumn) {
+        storeColumn.setCellValueFactory(new PropertyValueFactory<>("store"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        storeColumn.setSortable(false);
+    }
+
+    private void initializeData(TableView<Product> table, String productFile) {
+        ObservableList<Product> tableContent;
+        try {
+            tableContent = ProductTableMaker.getProduct(productFile);
             tableContent.sort(priceComparator);
-            table1.setItems(tableContent);
+            table.setItems(tableContent);
         } catch (IOException ex) {
             System.err.println("IOException" + ex);
         }
@@ -91,9 +88,8 @@ public class CustomerUIController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         hamburger_r.setVisible(false);
 
-        initializeData();
-        initializeColumns();
-        priceColumn.setSortType(TableColumn.SortType.ASCENDING);
+        initializeData(table11,"product1.csv");
+        initializeColumns(storeColumn11,priceColumn11);
     }
 
 }
