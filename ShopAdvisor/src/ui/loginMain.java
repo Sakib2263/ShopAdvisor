@@ -12,12 +12,16 @@ import javafx.stage.Stage;
 
 public class loginMain extends Application {
     
+    Stage window;
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         
         Scene scene = new Scene(root);
-        
+       
+        window = stage;
+        window.setTitle("ShopAdvisor");
+       
         stage.setScene(scene);
         stage.show();
     }
