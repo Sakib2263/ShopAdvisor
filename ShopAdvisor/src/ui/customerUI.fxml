@@ -71,7 +71,7 @@
                   <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="signoutButton" alignment="CENTER" layoutX="13.0" layoutY="141.0" mnemonicParsing="false" onAction="#signoutButtonAction" prefHeight="33.0" prefWidth="195.0" style="-fx-border-color: #9E9E9E;" text="Sign Out">
+            <Button fx:id="signoutButton" alignment="CENTER" layoutX="13.0" layoutY="141.0" mnemonicParsing="false" onAction="#signoutButtonAction" prefHeight="33.0" prefWidth="203.0" style="-fx-border-color: #9E9E9E;" text="Sign Out" textAlignment="CENTER" textFill="#c90b0b">
                <padding>
                   <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                </padding>

@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import data.*;
 
@@ -74,6 +75,12 @@ public class SignupController implements Initializable {
         }
         return true;
     }
+    @FXML
+    private Button GoBackButton;
+    @FXML
+    void GoBackButtonAction(ActionEvent event) throws IOException {
+        CommonControll.changeScreen(FXMLLoader.load(getClass().getResource("login.fxml")), (Stage) ((Node) event.getSource()).getScene().getWindow());
+    }    
     /**
      * Initializes the controller class.
      */
