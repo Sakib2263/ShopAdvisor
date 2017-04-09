@@ -45,11 +45,7 @@ public class SignupController implements Initializable {
         alert.setGraphic(null);
         alert.showAndWait();
         if (alert.getResult() == ButtonType.OK) {
-            Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
-            Scene scene = new Scene(root);
-            Stage signinStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            signinStage.setScene(scene);
-            signinStage.show();
+             CommonControll.changeScreen(FXMLLoader.load(getClass().getResource("login.fxml")), (Stage) ((Node) event.getSource()).getScene().getWindow());
         }
 
     }

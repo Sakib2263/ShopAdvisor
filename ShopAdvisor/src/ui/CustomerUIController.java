@@ -7,11 +7,14 @@ import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import productHandler.*;
 
 /**
@@ -31,6 +34,9 @@ public class CustomerUIController implements Initializable {
 
     @FXML
     private Button hamburger_r;
+    
+    @FXML
+    private Button signoutButton;
 
     @FXML
     private TableView<Product> table11;
@@ -55,6 +61,11 @@ public class CustomerUIController implements Initializable {
         hamburger_r.setVisible(false);
         rootPane.setLeft(leftPane);
 
+    }
+    
+    @FXML
+    void signoutButtonAction(ActionEvent event) throws IOException {
+        CommonControll.changeScreen(FXMLLoader.load(getClass().getResource("login.fxml")), (Stage) ((Node) event.getSource()).getScene().getWindow());
     }
 
     Comparator<? super Product> priceComparator = new Comparator<Product>() {

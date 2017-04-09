@@ -15,9 +15,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -26,27 +24,21 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="285.0" prefWidth="436.0" spacing="20.0" style="-fx-background-color: rgba(240, 248, 255, 0.4);">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <StackPane prefHeight="150.0" prefWidth="200.0">
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ShopAdvisor" wrappingWidth="233.20556640625" StackPane.alignment="TOP_CENTER">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </StackPane>
-                  <ImageView fitHeight="126.0" fitWidth="129.0" nodeOrientation="INHERIT" opacity="0.72" pickOnBounds="true" preserveRatio="true">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ShopAdvisor" wrappingWidth="233.20556640625" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="126.0" fitWidth="129.0" nodeOrientation="INHERIT" opacity="0.72" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="250.0">
                      <image>
                         <Image url="@../assets/icon/customer.png" />
                      </image>
                   </ImageView>
+                  <Button fx:id="signoutButton" layoutX="666.0" layoutY="11.0" mnemonicParsing="false" onAction="#signoutButtonAction" prefHeight="28.0" prefWidth="138.0" text="Sign Out" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
                </children>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </HBox>
+            </AnchorPane>
             <TabPane prefHeight="571.0" prefWidth="978.0" style="-fx-background-color: rgba(211, 211, 211, 0.25);" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Add Product">
@@ -61,6 +53,7 @@
                               </TableView>
                               <ScrollBar layoutX="594.0" layoutY="28.0" orientation="VERTICAL" prefHeight="381.0" prefWidth="14.0" />
                               <Button layoutX="7.0" layoutY="2.0" mnemonicParsing="false" text="Save" />
+                              <Button mnemonicParsing="false" text="Button" />
                            </children></AnchorPane>
                   </content>
                 </Tab>
