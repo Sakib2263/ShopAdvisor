@@ -14,8 +14,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import data.*;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 
 /**
  * FXML Controller class
@@ -47,23 +45,6 @@ public class LoginController implements Initializable {
         signupStage.setScene(signupScene);
         signupStage.show();
     }
-    
-    @FXML
-    public void start(Stage primaryStage) {
-      // ...
-      Node root = signinButton;
-      setGlobalEventHandler(root);
-}
-
-    private void setGlobalEventHandler(Node root) {
-    root.addEventHandler(KeyEvent.KEY_PRESSED, ev -> {
-        if (ev.getCode() == KeyCode.ENTER) {
-           //signupButtonAction(ActionEvent event);
-           signinButton.fire();
-           ev.consume(); 
-        }
-    });
-}
     boolean isAuthenticated() {
         String user = userNameInput.getText();
         if (typeChoiceBox.getValue().equals("Seller")) {
