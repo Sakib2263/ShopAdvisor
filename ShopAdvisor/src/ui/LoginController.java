@@ -35,7 +35,7 @@ public class LoginController implements Initializable {
     private ImageView bag;
 
     static dataMap userInfo = new dataMap("users.csv");
-    
+
     @FXML
     private void signupButtonAction(ActionEvent event) throws IOException {
         Parent signupParent = FXMLLoader.load(getClass().getResource("signup.fxml"));
@@ -44,15 +44,17 @@ public class LoginController implements Initializable {
         signupStage.setScene(signupScene);
         signupStage.show();
     }
+
     boolean isAuthenticated() {
         String user = userNameInput.getText();
         User val = dataMap.recordMap.get(user);
-        if(dataMap.recordMap.containsKey(user)){
-        return passwordInput.getText().equals(val.getPassword());
+        if (dataMap.recordMap.containsKey(user)) {
+            if (val.getType().equals((String) typeChoiceBox.getValue())) {
+                return passwordInput.getText().equals(val.getPassword());
+            }
         }
         return false;
     }
-    
 
     @FXML
     private void loginButtonAction(ActionEvent event) throws IOException {
