@@ -12,6 +12,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -25,44 +27,80 @@ public class CustomerUIController implements Initializable {
 
     @FXML
     private BorderPane rootPane;
-
     @FXML
     private VBox leftPane;
-
     @FXML
     private Button hamburger_l;
-
     @FXML
     private Button hamburger_r;
-    
     @FXML
     private Button signoutButton;
-
     @FXML
     private TableView<Product> table11;
-
     @FXML
     private TableColumn<Product, String> storeColumn11;
-
     @FXML
     private TableColumn<Product, Double> priceColumn11;
-
+    @FXML
+    private Button wishlistButton;
+    @FXML
+    private TableView<Product> table12;
+    @FXML
+    private TableColumn<Product, String> storeColumn12;
+    @FXML
+    private TableColumn<Product, Double> priceColumn12;
+    @FXML
+    private TableView<Product> table13;
+    @FXML
+    private TableColumn<Product, String> storeColumn13;
+    @FXML
+    private TableColumn<Product, Double> priceColumn13;
+    @FXML
+    private TableView<Product> table14;
+    @FXML
+    private TableColumn<Product, String> storeColumn14;
+    @FXML
+    private TableColumn<Product, Double> priceColumn14;
+    @FXML
+    private TableView<Product> wishlistTable;
+    @FXML
+    private TableColumn<Product, String> product_wishlist;
+    @FXML
+    private TableColumn<Product, String> store_wishlist;
+    @FXML
+    private TableColumn<Product, Double> price_wishlist;
+    @FXML
+    private Button orderButton;
+    @FXML
+    private Button hideWishlistButton;
+    @FXML
+    private AnchorPane rightPane;
+    @FXML
+    private ImageView hamburger_l1;
+    @FXML
+    void hideWishlist(ActionEvent event) throws IOException {
+        rootPane.setRight(null);
+        showPane(new ActionEvent());
+    }
+     @FXML
+    private void wishlistAction(ActionEvent event) throws IOException {
+        rootPane.setRight(rightPane);
+        hidePane(new ActionEvent());
+    }
+    @FXML
+    void orderAction(ActionEvent event) {
+    }
     @FXML
     private void hidePane(ActionEvent event) throws IOException {
         rootPane.setLeft(null);
         hamburger_r.setVisible(true);
-        //hamburger_l.setVisible(false);
-
     }
 
     @FXML
     private void showPane(ActionEvent event) throws IOException {
-        //hamburger_l.setVisible(false);
         hamburger_r.setVisible(false);
         rootPane.setLeft(leftPane);
-
-    }
-    
+    } 
     @FXML
     void signoutButtonAction(ActionEvent event) throws IOException {
         if(CommonControll.ConfirmationDialogueOK("Continue?", "Signout", "You are about to be signed out")){
@@ -96,11 +134,15 @@ public class CustomerUIController implements Initializable {
             System.err.println("IOException" + ex);
         }
     }
+    private void initializePanes(){
+        hamburger_r.setVisible(false);
+        rootPane.setRight(null);
+        
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        hamburger_r.setVisible(false);
-
+        initializePanes();
         initializeData(table11,"product1.csv");
         initializeColumns(storeColumn11,priceColumn11);
     }
