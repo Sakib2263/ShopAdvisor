@@ -17,7 +17,9 @@ public class SellerUIController implements Initializable {
     private Button signoutButton;
     @FXML
     void signoutButtonAction(ActionEvent event) throws IOException {
-        CommonControll.changeScreen(FXMLLoader.load(getClass().getResource("login.fxml")), (Stage) ((Node) event.getSource()).getScene().getWindow());
+        if(CommonControll.ConfirmationDialogueOK("Continue?", "Signout", "You are about to be signed out")){
+            CommonControll.changeScreen(FXMLLoader.load(getClass().getResource("login.fxml")), (Stage) ((Node) event.getSource()).getScene().getWindow());
+        }
     }    
     @Override
     public void initialize(URL url, ResourceBundle rb) {

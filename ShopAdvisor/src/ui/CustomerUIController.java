@@ -65,7 +65,9 @@ public class CustomerUIController implements Initializable {
     
     @FXML
     void signoutButtonAction(ActionEvent event) throws IOException {
-        CommonControll.changeScreen(FXMLLoader.load(getClass().getResource("login.fxml")), (Stage) ((Node) event.getSource()).getScene().getWindow());
+        if(CommonControll.ConfirmationDialogueOK("Continue?", "Signout", "You are about to be signed out")){
+            CommonControll.changeScreen(FXMLLoader.load(getClass().getResource("login.fxml")), (Stage) ((Node) event.getSource()).getScene().getWindow());
+        }
     }
 
     Comparator<? super Product> priceComparator = new Comparator<Product>() {

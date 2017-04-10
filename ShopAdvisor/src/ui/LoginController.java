@@ -34,8 +34,7 @@ public class LoginController implements Initializable {
     @FXML
     private ImageView bag;
 
-    static dataMap customerInfo = new dataMap("customer.txt");
-    static dataMap salerInfo = new dataMap("sales.txt");
+    static dataMap userInfo = new dataMap("users.csv");
     
     @FXML
     private void signupButtonAction(ActionEvent event) throws IOException {
@@ -47,11 +46,12 @@ public class LoginController implements Initializable {
     }
     boolean isAuthenticated() {
         String user = userNameInput.getText();
-        if (typeChoiceBox.getValue().equals("Seller")) {
-            return passwordInput.getText().equals(salerInfo.recordMap.get(user));
-        }else
-        return passwordInput.getText().equals(customerInfo.recordMap.get(user)); 
+        User val = dataMap.recordMap.get(user);
+        if(dataMap.recordMap.containsKey(user)){
+        return passwordInput.getText().equals(val.getPassword());
         }
+        return false;
+    }
     
 
     @FXML

@@ -18,5 +18,15 @@ public class FileOperations {
             System.err.println("Exception: " + ex + " File could not be found");
         } 
     }
+    public void addRecord(String userName, String password, String type, String FullName, String email, String address) {
+        try {
+            FileWriter fr = new FileWriter("data/users.csv", true);
+            fr.write(String.format("%s,%s,%s,%s,%s,%s\n",userName,password, type,FullName,email,address));
+            fr.flush();
+            System.out.println("record added");
+        } catch (IOException ex) {
+            System.err.println("Exception: " + ex + " File could not be found");
+        } 
+    }
 
 }

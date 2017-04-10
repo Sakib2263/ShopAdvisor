@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class dataMap {
-    public HashMap<String, String> recordMap;
+    public static HashMap<String, User> recordMap;
     
     public dataMap(){
         recordMap = new HashMap<>();
@@ -17,27 +17,25 @@ public class dataMap {
         loadMap(fileName);
     }
     
-    public final void loadMap(String fileName) {
-        
+    public void updateMap(String userName, String password, String type, String FullName, String email, String address){
+        recordMap.put(userName, new User(userName,password,type,FullName,email,address));
+    }
+
+    static HashMap loadMap(String fileName) {
         try {
             FileReader fr = new FileReader("data/" + fileName);
             Scanner sc = new Scanner(fr);
-            String holder[] = new String[2];
             while(sc.hasNext()){
                 String temp = sc.nextLine();
-                holder = temp.split(" ");
-                if(holder.length != 2) continue;
-                recordMap.put(holder[0], holder[1]);
+                String holder[] = temp.split(",");
+                recordMap.put(holder[0] , new User(holder[0], holder[1],holder[2],holder[3],holder[4],holder[5]));
                 
             }
         } catch (FileNotFoundException ex) {
             System.err.println("Exception: " + ex + " File could not be found");
 
         }
-    }
-    
-    public void updateMap(String record1, String record2){
-        recordMap.put(record1, record2);
+        return recordMap;
     }
     
 }

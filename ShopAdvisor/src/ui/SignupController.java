@@ -37,13 +37,8 @@ public class SignupController implements Initializable {
     @FXML
     private void registerButtonAction(ActionEvent event) throws IOException {
         registerUser();
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Please sign in");
-        alert.setTitle("Registration");
-        alert.setHeaderText("Registration Successful");
-        alert.setGraphic(null);
-        alert.showAndWait();
-        if (alert.getResult() == ButtonType.OK) {
-             CommonControll.changeScreen(FXMLLoader.load(getClass().getResource("login.fxml")), (Stage) ((Node) event.getSource()).getScene().getWindow());
+        if(CommonControll.ConfirmationDialogueOK("Please sign in", "Registration", "Registration Successful")){
+            CommonControll.changeScreen(FXMLLoader.load(getClass().getResource("login.fxml")), (Stage) ((Node) event.getSource()).getScene().getWindow());
         }
 
     }
@@ -57,16 +52,15 @@ public class SignupController implements Initializable {
         else{
             file = "sales.txt";
         }
-        String usrnm = userNameInput.getText();
-        String pass = passwordInput.getText();
-        if(isUniqueUser(usrnm,pass)){
-            fop.addRecord(file, usrnm, pass);
-            LoginController.customerInfo.updateMap(usrnm, pass);
+        if(isUniqueUser(userNameInput.getText())){
+            fop.addRecord(userNameInput.getText(),passwordInput.getText(),(String) typeChoiceBox.getValue(),fullNameInput.getText(),emailInput.getText(),addressInput.getText());
+            //fop.addRecord("customer.txt",userNameInput.getText(),passwordInput.getText());
+            LoginController.userInfo.updateMap(userNameInput.getText(),passwordInput.getText(),(String) typeChoiceBox.getValue(),fullNameInput.getText(),emailInput.getText(),addressInput.getText());
         }
         
     }
-    private boolean isUniqueUser(String usrnm,String pass){
-        if(LoginController.customerInfo.recordMap.containsKey(usrnm)){
+    private boolean isUniqueUser(String usrnm){
+        if(LoginController.userInfo.recordMap.containsKey(usrnm)){
             System.out.println("Username not unique");
             return false;
         }
