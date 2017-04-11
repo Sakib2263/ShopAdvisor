@@ -260,7 +260,7 @@
                                              </columnResizePolicy>
                                           </TableView>
                                           <Label alignment="CENTER" layoutX="44.0" layoutY="120.0" prefHeight="17.0" prefWidth="138.0" text="Pendrives (16 GB)" />
-                                          <Button layoutX="4.0" layoutY="336.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="218.0" style="-fx-border-color: #9E9E9E;" text="Add selected item to wishlist" AnchorPane.bottomAnchor="2.0">
+                                          <Button layoutX="4.0" layoutY="336.0" mnemonicParsing="false" onAction="#addToWishListAction111" prefHeight="25.0" prefWidth="218.0" style="-fx-border-color: #9E9E9E;" text="Add selected item to wishlist" AnchorPane.bottomAnchor="2.0">
                                              <effect>
                                                 <InnerShadow />
                                              </effect>
@@ -287,7 +287,7 @@
                                              </columnResizePolicy>
                                           </TableView>
                                           <Label alignment="CENTER" layoutX="44.0" layoutY="120.0" prefHeight="17.0" prefWidth="138.0" text="HDD - 2TB (External)" />
-                                          <Button layoutX="4.0" layoutY="336.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="218.0" style="-fx-border-color: #9E9E9E;" text="Add selected item to wishlist" AnchorPane.bottomAnchor="2.0">
+                                          <Button layoutX="4.0" layoutY="336.0" mnemonicParsing="false" onAction="#addToWishListAction121" prefHeight="25.0" prefWidth="218.0" style="-fx-border-color: #9E9E9E;" text="Add selected item to wishlist" AnchorPane.bottomAnchor="2.0">
                                              <effect>
                                                 <InnerShadow />
                                              </effect>
@@ -314,7 +314,7 @@
                                              </columnResizePolicy>
                                           </TableView>
                                           <Label alignment="CENTER" layoutX="44.0" layoutY="120.0" prefHeight="17.0" prefWidth="138.0" text="Joystick (USB)" />
-                                          <Button layoutX="4.0" layoutY="336.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="218.0" style="-fx-border-color: #9E9E9E;" text="Add selected item to wishlist" AnchorPane.bottomAnchor="2.0">
+                                          <Button layoutX="4.0" layoutY="336.0" mnemonicParsing="false" onAction="#addToWishListAction131" prefHeight="25.0" prefWidth="218.0" style="-fx-border-color: #9E9E9E;" text="Add selected item to wishlist" AnchorPane.bottomAnchor="2.0">
                                              <effect>
                                                 <InnerShadow />
                                              </effect>
@@ -341,7 +341,7 @@
                                              </columnResizePolicy>
                                           </TableView>
                                           <Label alignment="CENTER" layoutX="44.0" layoutY="120.0" prefHeight="17.0" prefWidth="138.0" text="UPS (500V)" />
-                                          <Button layoutX="4.0" layoutY="336.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="218.0" style="-fx-border-color: #9E9E9E;" text="Add selected item to wishlist" AnchorPane.bottomAnchor="2.0">
+                                          <Button layoutX="4.0" layoutY="336.0" mnemonicParsing="false" onAction="#addToWishListAction141" prefHeight="25.0" prefWidth="218.0" style="-fx-border-color: #9E9E9E;" text="Add selected item to wishlist" AnchorPane.bottomAnchor="2.0">
                                              <effect>
                                                 <InnerShadow />
                                              </effect>
