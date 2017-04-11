@@ -1,9 +1,11 @@
-package productHandler;
+package data;
 
 
 public class Product {
+    private int id;
     private double price;
     private String store;
+    private  String Name;
 
     public Product(String store,double price) {
         this.price = price;
@@ -11,6 +13,17 @@ public class Product {
     }
 
     public Product() {
+    }
+
+    public Product(String Name,String store, double price) {
+        this.price = price;
+        this.store = store;
+        this.Name = Name;
+    }
+    
+
+    public int getId() {
+        return id;
     }
 
     public double getPrice() {
@@ -21,6 +34,10 @@ public class Product {
         return store;
     }
 
+    public String getName() {
+        return Name;
+    }
+
     public void setPrice(double price) {
         this.price = price;
     }
@@ -28,6 +45,15 @@ public class Product {
     public void setStore(String store) {
         this.store = store;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String Name) {
+        this.Name = Name;
+    }
+    
     
     
 }

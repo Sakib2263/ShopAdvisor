@@ -1,8 +1,8 @@
 package data;
 
 public class User {
-    private String userName, type, FullName, email, address;
-    private String password;
+    protected String userName, type, FullName, email, address;
+    protected String password;
 
     public User(String userName, String password, String type, String FullName, String email, String address) {
         this.userName = userName;

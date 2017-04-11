@@ -1,4 +1,4 @@
-package productHandler;
+package data;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -13,7 +13,7 @@ public class ProductTableMaker {
 
         ObservableList<Product> products = FXCollections.observableArrayList();
 
-        FileReader CSVFile = new FileReader("data/" + fileName);
+        FileReader CSVFile = new FileReader("data/" + fileName + ".csv");
         Scanner sc = new Scanner(CSVFile);
 
         while (sc.hasNext()) {
@@ -23,7 +23,7 @@ public class ProductTableMaker {
                 continue;
             }
             //System.out.println(dataArray[0] + " " + dataArray[1]);
-            products.add(new Product(dataArray[0], Double.parseDouble(dataArray[1])));
+            products.add(new Product(fileName, dataArray[0], Double.parseDouble(dataArray[1])));
         }
 
         return products;
