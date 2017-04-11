@@ -163,10 +163,10 @@ public class CustomerUIController implements Initializable {
         initializeData(table11,"burger");
         initializeColumns(storeColumn11,priceColumn11);
         
-        initializeData(table12,"product2.csv");
+        initializeData(table12,"sandwitch");
         initializeColumns(storeColumn12,priceColumn12);
         
-         initializeData(table13,"product3.csv");
+         initializeData(table13,"taco");
         initializeColumns(storeColumn13,priceColumn13);
         
     }
