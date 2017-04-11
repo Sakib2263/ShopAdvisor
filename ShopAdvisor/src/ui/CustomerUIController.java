@@ -143,7 +143,7 @@ public class CustomerUIController implements Initializable {
     public void addSelecteditem(TableView<Product> table){
         Product p = table.getSelectionModel().getSelectedItem();
         if(p != null){
-           SelectedProducts.add(p);   
+           SelectedProducts.add(p);
         }
     }
     public void makewishlist(){
@@ -154,8 +154,20 @@ public class CustomerUIController implements Initializable {
     @FXML
     void addToWishListAction(ActionEvent event) {
         addSelecteditem(table11);
+        makewishlist();
+    }
+        @FXML
+    void addToWishListAction1(ActionEvent event) {
         addSelecteditem(table12);
+        makewishlist();
+    }
+        @FXML
+    void addToWishListAction2(ActionEvent event) {
         addSelecteditem(table13);
+        makewishlist();
+    }
+        @FXML
+    void addToWishListAction3(ActionEvent event) {
         addSelecteditem(table14);
         makewishlist();
     }
