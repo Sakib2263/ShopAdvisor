@@ -154,6 +154,9 @@ public class CustomerUIController implements Initializable {
     @FXML
     void addToWishListAction(ActionEvent event) {
         addSelecteditem(table11);
+        addSelecteditem(table12);
+        addSelecteditem(table13);
+        addSelecteditem(table14);
         makewishlist();
     }
 
