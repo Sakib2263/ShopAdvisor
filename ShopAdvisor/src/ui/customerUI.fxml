@@ -140,7 +140,7 @@
                                              </columnResizePolicy>
                                           </TableView>
                                           <Label alignment="CENTER" layoutX="44.0" layoutY="120.0" prefHeight="17.0" prefWidth="138.0" text="Burger" />
-                                          <Button fx:id="add_to_w11" layoutX="4.0" layoutY="336.0" mnemonicParsing="false" onAction="#addToWishListAction" prefHeight="25.0" prefWidth="218.0" style="-fx-border-color: #9E9E9E;" text="Add selected item to wishlist" AnchorPane.bottomAnchor="2.0">
+                                          <Button fx:id="add_to_w11" layoutX="4.0" layoutY="336.0" mnemonicParsing="false" onAction="#addToWishListAction11" prefHeight="25.0" prefWidth="218.0" style="-fx-border-color: #9E9E9E;" text="Add selected item to wishlist" AnchorPane.bottomAnchor="2.0">
                                              <effect>
                                                 <InnerShadow />
                                              </effect>
@@ -167,7 +167,7 @@
                                              </columnResizePolicy>
                                           </TableView>
                                           <Label alignment="CENTER" layoutX="44.0" layoutY="120.0" prefHeight="17.0" prefWidth="138.0" text="Sub Sandwich" />
-                                          <Button layoutX="4.0" layoutY="336.0" mnemonicParsing="false" onAction="#addToWishListAction1" prefHeight="25.0" prefWidth="218.0" style="-fx-border-color: #9E9E9E;" text="Add selected item to wishlist" AnchorPane.bottomAnchor="2.0">
+                                          <Button layoutX="4.0" layoutY="336.0" mnemonicParsing="false" onAction="#addToWishListAction12" prefHeight="25.0" prefWidth="218.0" style="-fx-border-color: #9E9E9E;" text="Add selected item to wishlist" AnchorPane.bottomAnchor="2.0">
                                              <effect>
                                                 <InnerShadow />
                                              </effect>
@@ -194,7 +194,7 @@
                                              </columnResizePolicy>
                                           </TableView>
                                           <Label alignment="CENTER" layoutX="44.0" layoutY="120.0" prefHeight="17.0" prefWidth="138.0" text="Mexican Tacos" />
-                                          <Button layoutX="4.0" layoutY="336.0" mnemonicParsing="false" onAction="#addToWishListAction2" prefHeight="25.0" prefWidth="218.0" style="-fx-border-color: #9E9E9E;" text="Add selected item to wishlist" AnchorPane.bottomAnchor="2.0">
+                                          <Button layoutX="4.0" layoutY="336.0" mnemonicParsing="false" onAction="#addToWishListAction13" prefHeight="25.0" prefWidth="218.0" style="-fx-border-color: #9E9E9E;" text="Add selected item to wishlist" AnchorPane.bottomAnchor="2.0">
                                              <effect>
                                                 <InnerShadow />
                                              </effect>
@@ -221,7 +221,7 @@
                                              </columnResizePolicy>
                                           </TableView>
                                           <Label alignment="CENTER" layoutX="44.0" layoutY="120.0" prefHeight="17.0" prefWidth="138.0" text="Chicken Fries" />
-                                          <Button layoutX="4.0" layoutY="336.0" mnemonicParsing="false" onAction="#addToWishListAction3" prefHeight="25.0" prefWidth="218.0" style="-fx-border-color: #9E9E9E;" text="Add selected item to wishlist" AnchorPane.bottomAnchor="2.0">
+                                          <Button layoutX="4.0" layoutY="336.0" mnemonicParsing="false" onAction="#addToWishListAction14" prefHeight="25.0" prefWidth="218.0" style="-fx-border-color: #9E9E9E;" text="Add selected item to wishlist" AnchorPane.bottomAnchor="2.0">
                                              <effect>
                                                 <InnerShadow />
                                              </effect>
@@ -366,7 +366,7 @@
       </VBox>
    </center>
    <right>
-      <AnchorPane fx:id="rightPane" prefHeight="637.0" prefWidth="210.0" style="-fx-background-color: rgba(47, 79, 79,0.55);" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="rightPane" prefHeight="637.0" prefWidth="269.0" style="-fx-background-color: rgba(47, 79, 79,0.55);" BorderPane.alignment="CENTER">
          <children>
             <TableView fx:id="wishlistTable" prefHeight="320.0" prefWidth="190.0" style="-fx-background-color: rgba(240, 248, 255, 0.4);" tableMenuButtonVisible="false" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0">
                <columns>
