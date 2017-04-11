@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="Salesroot" prefHeight="637.0" prefWidth="978.0" styleClass="Salesroot" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.SellerUIController">
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ShopAdvisor" wrappingWidth="233.20556640625" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="126.0" fitWidth="129.0" nodeOrientation="INHERIT" opacity="0.72" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="250.0">
+                     <image>
+                        <Image url="@../assets/icon/customer.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="signoutButton" layoutX="666.0" layoutY="11.0" mnemonicParsing="false" onAction="#signoutButtonAction" prefHeight="28.0" prefWidth="138.0" text="Sign Out" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+               </children>
+            </AnchorPane>
+            <TabPane prefHeight="571.0" prefWidth="978.0" style="-fx-background-color: rgba(211, 211, 211, 0.25);" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Add Product">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="347.0" prefWidth="656.0">
+                           <children>
+                              <TableView layoutX="7.0" layoutY="28.0" prefHeight="381.0" prefWidth="594.0">
+                                <columns>
+                                  <TableColumn prefWidth="75.0" text="C1" />
+                                  <TableColumn prefWidth="75.0" text="C2" />
+                                </columns>
+                              </TableView>
+                              <ScrollBar layoutX="594.0" layoutY="28.0" orientation="VERTICAL" prefHeight="381.0" prefWidth="14.0" />
+                              <Button layoutX="7.0" layoutY="2.0" mnemonicParsing="false" text="Save" />
+                              <Button mnemonicParsing="false" text="Button" />
+                           </children></AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab text="Product List">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <GridPane layoutX="46.0" layoutY="26.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="63.0" prefWidth="383.0" text="Product Name">
+                                       <font>
+                                          <Font size="44.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="8.0" prefHeight="63.0" prefWidth="383.0" text="Availability" GridPane.columnIndex="1">
+                                       <font>
+                                          <Font size="44.0" />
+                                       </font>
+                                    </Label>
+                                    <ToggleButton mnemonicParsing="false" prefHeight="63.0" prefWidth="387.0" text="Yes" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font size="29.0" />
+                                       </font>
+                                    </ToggleButton>
+                                    <ToggleButton layoutX="394.0" layoutY="70.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="387.0" text="Yes" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                       <font>
+                                          <Font size="29.0" />
+                                       </font>
+                                    </ToggleButton>
+                                    <ToggleButton layoutX="394.0" layoutY="70.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="387.0" text="Yes" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                       <font>
+                                          <Font size="29.0" />
+                                       </font>
+                                    </ToggleButton>
+                                    <ToggleButton layoutX="394.0" layoutY="70.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="387.0" text="Yes" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font size="29.0" />
+                                       </font>
+                                    </ToggleButton>
+                                    <ToggleButton layoutX="394.0" layoutY="70.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="387.0" text="Yes" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font size="29.0" />
+                                       </font>
+                                    </ToggleButton>
+                                    <ToggleButton layoutX="394.0" layoutY="70.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="387.0" text="Yes" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font size="29.0" />
+                                       </font>
+                                    </ToggleButton>
+                                 </children>
+                              </GridPane>
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Change/Edit info">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                  </Tab>
+              </tabs>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </TabPane>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
