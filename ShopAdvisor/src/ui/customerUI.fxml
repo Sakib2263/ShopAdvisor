@@ -86,7 +86,7 @@
                <children>
                   <Button fx:id="hamburger_r" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showPane" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: rgba(0,0,0,0);">
                      <graphic>
-                        <ImageView fx:id="hamburger_l1" fitHeight="33.0" fitWidth="36.0" onDragDetected="#hidePane" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="33.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../assets/icon/menu_icon.png" />
                            </image>
@@ -140,7 +140,7 @@
                                              </columnResizePolicy>
                                           </TableView>
                                           <Label alignment="CENTER" layoutX="44.0" layoutY="120.0" prefHeight="17.0" prefWidth="138.0" text="Burger" />
-                                          <Button layoutX="4.0" layoutY="336.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="218.0" style="-fx-border-color: #9E9E9E;" text="Add selected item to wishlist" AnchorPane.bottomAnchor="2.0">
+                                          <Button fx:id="add_to_w11" layoutX="4.0" layoutY="336.0" mnemonicParsing="false" onAction="#addToWishListAction" prefHeight="25.0" prefWidth="218.0" style="-fx-border-color: #9E9E9E;" text="Add selected item to wishlist" AnchorPane.bottomAnchor="2.0">
                                              <effect>
                                                 <InnerShadow />
                                              </effect>

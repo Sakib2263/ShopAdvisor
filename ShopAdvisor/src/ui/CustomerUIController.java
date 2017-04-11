@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Comparator;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,12 +13,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import productHandler.*;
+import data.*;
 
 /**
  * FXML Controller class
@@ -76,8 +76,8 @@ public class CustomerUIController implements Initializable {
     @FXML
     private AnchorPane rightPane;
     @FXML
-    private ImageView hamburger_l1;
-    @FXML
+    ObservableList<Product> SelectedProducts = FXCollections.observableArrayList();
+     @FXML
     void hideWishlist(ActionEvent event) throws IOException {
         rootPane.setRight(null);
         showPane(new ActionEvent());
@@ -139,11 +139,27 @@ public class CustomerUIController implements Initializable {
         rootPane.setRight(null);
         
     }
+    public void addSelecteditem(TableView<Product> table){
+        Product p = table.getSelectionModel().getSelectedItem();
+        if(p != null){
+           SelectedProducts.add(p);   
+        }
+    }
+    public void makewishlist(){
+        wishlistTable.setItems(SelectedProducts);
+        initializeColumns(store_wishlist,price_wishlist);
+        product_wishlist.setCellValueFactory(new PropertyValueFactory<>("Name"));
+    }
+    @FXML
+    void addToWishListAction(ActionEvent event) {
+        addSelecteditem(table11);
+        makewishlist();
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initializePanes();
-        initializeData(table11,"product1.csv");
+        initializeData(table11,"burger");
         initializeColumns(storeColumn11,priceColumn11);
     }
 
