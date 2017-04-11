@@ -152,22 +152,22 @@ public class CustomerUIController implements Initializable {
         product_wishlist.setCellValueFactory(new PropertyValueFactory<>("Name"));
     }
     @FXML
-    void addToWishListAction(ActionEvent event) {
+    void addToWishListAction11(ActionEvent event) {
         addSelecteditem(table11);
         makewishlist();
     }
         @FXML
-    void addToWishListAction1(ActionEvent event) {
+    void addToWishListAction12(ActionEvent event) {
         addSelecteditem(table12);
         makewishlist();
     }
         @FXML
-    void addToWishListAction2(ActionEvent event) {
+    void addToWishListAction13(ActionEvent event) {
         addSelecteditem(table13);
         makewishlist();
     }
         @FXML
-    void addToWishListAction3(ActionEvent event) {
+    void addToWishListAction14(ActionEvent event) {
         addSelecteditem(table14);
         makewishlist();
     }
@@ -181,8 +181,11 @@ public class CustomerUIController implements Initializable {
         initializeData(table12,"sandwitch");
         initializeColumns(storeColumn12,priceColumn12);
         
-         initializeData(table13,"taco");
+        initializeData(table13,"taco");
         initializeColumns(storeColumn13,priceColumn13);
+        
+        initializeData(table14,"fried_chicken");
+        initializeColumns(storeColumn14,priceColumn14);
         
     }
 

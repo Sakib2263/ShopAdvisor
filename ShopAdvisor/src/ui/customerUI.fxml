@@ -237,7 +237,7 @@
                         </ScrollPane>
                      </content>
                 </Tab>
-                  <Tab onSelectionChanged="#addToWishListAction" text="Components">
+                  <Tab text="Components">
                      <content>
                         <ScrollPane prefHeight="200.0" prefWidth="200.0" style="-fx-background: rgba(240, 248, 255, 0.12);">
                            <content>
