@@ -35,6 +35,7 @@ public class CustomerUIController implements Initializable {
     private Button hamburger_r;
     @FXML
     private Button signoutButton;
+    
     @FXML
     private TableView<Product> table11;
     @FXML
@@ -62,7 +63,7 @@ public class CustomerUIController implements Initializable {
     @FXML
     private TableColumn<Product, Double> priceColumn14;
     @FXML
-    private TableView<Product> wishlistTable;
+    private TableView<Product> wishlistTable; ////// whish list
     @FXML
     private TableColumn<Product, String> product_wishlist;
     @FXML
@@ -161,6 +162,13 @@ public class CustomerUIController implements Initializable {
         initializePanes();
         initializeData(table11,"burger");
         initializeColumns(storeColumn11,priceColumn11);
+        
+        initializeData(table12,"product2.csv");
+        initializeColumns(storeColumn12,priceColumn12);
+        
+         initializeData(table13,"product3.csv");
+        initializeColumns(storeColumn13,priceColumn13);
+        
     }
 
 }
