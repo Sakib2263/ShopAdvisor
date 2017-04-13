@@ -101,6 +101,8 @@ public class CustomerUIController implements Initializable {
     @FXML
     private AnchorPane rightPane;
     @FXML
+    private Label totalPrice;
+    @FXML
     ObservableList<Product> SelectedProducts = FXCollections.observableArrayList();
     
      @FXML
@@ -175,6 +177,7 @@ public class CustomerUIController implements Initializable {
         wishlistTable.setItems(SelectedProducts);
         initializeColumns(store_wishlist,price_wishlist);
         product_wishlist.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        getTotal();
     }
         @FXML
     void addToWishListAction11(ActionEvent event) {
@@ -215,12 +218,7 @@ public class CustomerUIController implements Initializable {
         addSelecteditem(table141);
         makewishlist();
     }
-
-    
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        initializePanes();
+    void initializeTables(){
         //Category 1
         initializeData(table11,"burger");
         initializeColumns(storeColumn11,priceColumn11);    
@@ -238,6 +236,20 @@ public class CustomerUIController implements Initializable {
         initializeData(table131,"Joystick");
         initializeColumns(storeColumn131,priceColumn131);
         initializeData(table141,"UPS");
-        initializeColumns(storeColumn141,priceColumn141);   
+        initializeColumns(storeColumn141,priceColumn141);  
+    }
+    void getTotal(){
+        double total = 0.0;
+        for(Product p : SelectedProducts){
+            total+= p.getPrice();
+        }
+        //System.out.println("Total " + total);
+        totalPrice.setText("\tTotal:\t" + total);
+    }
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        initializePanes();
+        initializeTables();
     }
 }
