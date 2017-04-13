@@ -41,19 +41,19 @@
             </AnchorPane>
             <TabPane prefHeight="571.0" prefWidth="978.0" style="-fx-background-color: rgba(211, 211, 211, 0.25);" tabClosingPolicy="UNAVAILABLE">
               <tabs>
-                <Tab text="Add Product">
+                <Tab text="Add/Update Product">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="347.0" prefWidth="656.0">
                            <children>
-                              <TableView layoutX="7.0" layoutY="28.0" prefHeight="381.0" prefWidth="594.0">
+                              <TableView fx:id="table1" layoutX="7.0" layoutY="25.0" prefHeight="384.0" prefWidth="367.0">
                                 <columns>
-                                  <TableColumn prefWidth="75.0" text="C1" />
-                                  <TableColumn prefWidth="75.0" text="C2" />
+                                  <TableColumn fx:id="storeColumn1" prefWidth="122.0" text="Product" />
+                                  <TableColumn fx:id="priceColumn1" prefWidth="138.0" text="Price" />
                                 </columns>
                               </TableView>
                               <ScrollBar layoutX="594.0" layoutY="28.0" orientation="VERTICAL" prefHeight="381.0" prefWidth="14.0" />
                               <Button layoutX="7.0" layoutY="2.0" mnemonicParsing="false" text="Save" />
-                              <Button mnemonicParsing="false" text="Button" />
+                              <Button fx:id="updateButton" layoutX="48.0" layoutY="2.0" mnemonicParsing="false" onAction="#updateButtonAction" text="Update" />
                            </children></AnchorPane>
                   </content>
                 </Tab>

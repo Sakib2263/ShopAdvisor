@@ -244,7 +244,7 @@ public class CustomerUIController implements Initializable {
             total+= p.getPrice();
         }
         //System.out.println("Total " + total);
-        totalPrice.setText("\tTotal:\t" + total);
+        totalPrice.setText("\tTotal:\t" + total + "$");
     }
     
     @Override
