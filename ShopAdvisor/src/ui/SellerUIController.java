@@ -10,6 +10,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -19,18 +22,25 @@ public class SellerUIController implements Initializable {
     @FXML
     private Button signoutButton;
     @FXML
+    private BorderPane Salesroot;
+    @FXML
+    private TableView<?> table1;
+    @FXML
+    private TableColumn<?, ?> storeColumn1;
+    @FXML
+    private TableColumn<?, ?> priceColumn1;
+    @FXML
+    private Button updateButton;
+    @FXML
     void signoutButtonAction(ActionEvent event) throws IOException {
         if(CommonControll.ConfirmationDialogueOK("Continue?", "Signout", "You are about to be signed out")){
             CommonControll.changeScreen(FXMLLoader.load(getClass().getResource("login.fxml")), (Stage) ((Node) event.getSource()).getScene().getWindow());
         }
     }  
-    /*
-    final Button browseButton = new Button("Browse");
-    browseButton.setOnAction(
-    new EventHandler<ActionEvent>() {
-        @Override
-        public void handle(final ActionEvent e) {
-            final DirectoryChooser directoryChooser =
+    
+    @FXML
+    private void updateButtonAction(ActionEvent event) {
+        final DirectoryChooser directoryChooser =
                 new DirectoryChooser();
             Window stage = null;
             final File selectedDirectory =
@@ -38,10 +48,8 @@ public class SellerUIController implements Initializable {
             if (selectedDirectory != null) {
                 selectedDirectory.getAbsolutePath();
             }
-        }
     }
-);
-*/
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

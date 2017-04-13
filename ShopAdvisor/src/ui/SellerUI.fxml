@@ -8,7 +8,6 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -86,42 +85,12 @@
                                           <Font size="44.0" />
                                        </font>
                                     </Label>
-                                    <ToggleButton mnemonicParsing="false" prefHeight="63.0" prefWidth="387.0" text="Yes" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                       <font>
-                                          <Font size="29.0" />
-                                       </font>
-                                    </ToggleButton>
-                                    <ToggleButton layoutX="394.0" layoutY="70.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="387.0" text="Yes" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                                       <font>
-                                          <Font size="29.0" />
-                                       </font>
-                                    </ToggleButton>
-                                    <ToggleButton layoutX="394.0" layoutY="70.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="387.0" text="Yes" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                                       <font>
-                                          <Font size="29.0" />
-                                       </font>
-                                    </ToggleButton>
-                                    <ToggleButton layoutX="394.0" layoutY="70.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="387.0" text="Yes" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                                       <font>
-                                          <Font size="29.0" />
-                                       </font>
-                                    </ToggleButton>
-                                    <ToggleButton layoutX="394.0" layoutY="70.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="387.0" text="Yes" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                       <font>
-                                          <Font size="29.0" />
-                                       </font>
-                                    </ToggleButton>
-                                    <ToggleButton layoutX="394.0" layoutY="70.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="387.0" text="Yes" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                       <font>
-                                          <Font size="29.0" />
-                                       </font>
-                                    </ToggleButton>
                                  </children>
                               </GridPane>
                            </children></AnchorPane>
                     </content>
                   </Tab>
-                  <Tab text="Change/Edit info">
+                  <Tab text="Orders">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                     </content>
