@@ -18,6 +18,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import data.*;
+import net.*;
 
 /**
  * FXML Controller class
@@ -35,7 +36,6 @@ public class CustomerUIController implements Initializable {
     private Button hamburger_r;
     @FXML
     private Button signoutButton;
-    
     @FXML
     private TableView<Product> table11;
     @FXML
@@ -87,7 +87,7 @@ public class CustomerUIController implements Initializable {
     @FXML
     private TableColumn<Product, Double> priceColumn141;
     @FXML
-    private TableView<Product> wishlistTable; ////// whish list
+    private TableView<Product> wishlistTable;
     @FXML
     private TableColumn<Product, String> product_wishlist;
     @FXML
@@ -104,30 +104,50 @@ public class CustomerUIController implements Initializable {
     private Label totalPrice;
     @FXML
     ObservableList<Product> SelectedProducts = FXCollections.observableArrayList();
+    User currentCustomer = CurrentState.getLoggedinUser();
     
      @FXML
     void hideWishlist(ActionEvent event) throws IOException {
         rootPane.setRight(null);
         showPane(new ActionEvent());
     }
-     @FXML
-    private void wishlistAction(ActionEvent event) throws IOException {
+    @FXML
+    private void showWishlistAction(ActionEvent event) throws IOException {
         rootPane.setRight(rightPane);
-        hidePane(new ActionEvent());
+        hidePaneAction(new ActionEvent());
+    }
+    private void showWishlist(){
+        rootPane.setRight(rightPane);
+        hidePane();
     }
     @FXML
     void orderAction(ActionEvent event) {
+        OrderMaker t = new OrderMaker(SelectedProducts, currentCustomer);
+        t.start();
+        makewishlist();
     }
     @FXML
-    private void hidePane(ActionEvent event) throws IOException {
+    private void hidePaneAction(ActionEvent event) throws IOException {
         rootPane.setLeft(null);
         hamburger_r.setVisible(true);
+    }
+    private void hidePane() {
+        rootPane.setLeft(null);
+        hamburger_r.setVisible(true);
+    }
+    
+    private boolean isWishlistVisible(){
+        if(rootPane.getRight() != null){
+            return true;
+        }
+        return false;
     }
 
     @FXML
     private void showPane(ActionEvent event) throws IOException {
         hamburger_r.setVisible(false);
         rootPane.setLeft(leftPane);
+        rootPane.setRight(null);
     } 
     @FXML
     void signoutButtonAction(ActionEvent event) throws IOException {
@@ -183,40 +203,56 @@ public class CustomerUIController implements Initializable {
     void addToWishListAction11(ActionEvent event) {
         addSelecteditem(table11);
         makewishlist();
+        if(!isWishlistVisible())
+            showWishlist();
     }
         @FXML
     void addToWishListAction12(ActionEvent event) {
         addSelecteditem(table12);
         makewishlist();
+        if(!isWishlistVisible())
+            showWishlist();
     }
         @FXML
     void addToWishListAction13(ActionEvent event) {
         addSelecteditem(table13);
         makewishlist();
+        if(!isWishlistVisible())
+            showWishlist();
     }
         @FXML
     void addToWishListAction14(ActionEvent event) {
         addSelecteditem(table14);
         makewishlist();
+        if(!isWishlistVisible())
+            showWishlist();
     }@FXML
     void addToWishListAction111(ActionEvent event) {
         addSelecteditem(table111);
         makewishlist();
+        if(!isWishlistVisible())
+            showWishlist();
     }
         @FXML
     void addToWishListAction121(ActionEvent event) {
         addSelecteditem(table121);
         makewishlist();
+        if(!isWishlistVisible())
+            showWishlist();
     }
         @FXML
     void addToWishListAction131(ActionEvent event) {
         addSelecteditem(table131);
         makewishlist();
+        if(!isWishlistVisible())
+            showWishlist();
     }
         @FXML
     void addToWishListAction141(ActionEvent event) {
         addSelecteditem(table141);
         makewishlist();
+        if(!isWishlistVisible())
+            showWishlist();
     }
     void initializeTables(){
         //Category 1
