@@ -23,9 +23,9 @@
 
 <BorderPane fx:id="rootPane" prefHeight="637.0" prefWidth="1026.0" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CustomerUIController">
    <left>
-      <VBox fx:id="leftPane" prefHeight="637.0" prefWidth="216.0" style="-fx-background-color: rgba(47, 79, 79,0.55);" BorderPane.alignment="CENTER">
+      <VBox fx:id="leftPane" prefHeight="637.0" prefWidth="216.0" style="-fx-background-color: rgba(47, 79, 79,0.40);" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="hamburger_l" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#hidePane" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: rgba(0,0,0,0);">
+            <Button fx:id="hamburger_l" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#hidePaneAction" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: rgba(0,0,0,0);">
                <graphic>
                   <ImageView fitHeight="33.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -40,7 +40,7 @@
                   <Insets left="5.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="wishlistButton" alignment="CENTER" mnemonicParsing="false" onAction="#wishlistAction" prefHeight="33.0" prefWidth="195.0" style="-fx-border-color: #9E9E9E;" text="My Wishlist">
+            <Button fx:id="wishlistButton" alignment="CENTER" mnemonicParsing="false" onAction="#showWishlistAction" prefHeight="33.0" prefWidth="195.0" style="-fx-border-color: #9E9E9E;" text="My Wishlist">
                <VBox.margin>
                   <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                </VBox.margin>
@@ -77,7 +77,10 @@
                   <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                </padding>
             </Button>
-         </children></VBox>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect></VBox>
    </left>
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">

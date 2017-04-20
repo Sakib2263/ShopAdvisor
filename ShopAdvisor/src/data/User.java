@@ -39,6 +39,9 @@ public class User {
     public String getPassword() {
         return password;
     }
-   
     
+    @Override
+    public String toString(){
+        return "Name: " + FullName + "\nEmail: " + email + "\nAddress: " + address;
+    }
 }

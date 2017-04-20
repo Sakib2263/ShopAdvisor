@@ -53,7 +53,11 @@ public class Product {
     public void setName(String Name) {
         this.Name = Name;
     }
+    @Override
+    public String toString(){
+      
+       return "@" + store + " Name: " + Name + "\n";
+    }
     
-    
-    
+      
 }

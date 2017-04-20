@@ -50,6 +50,7 @@ public class LoginController implements Initializable {
         User val = dataMap.recordMap.get(user);
         if (dataMap.recordMap.containsKey(user)) {
             if (val.getType().equals((String) typeChoiceBox.getValue())) {
+                CurrentState.setLoggedinUser(val);
                 return passwordInput.getText().equals(val.getPassword());
             }
         }
