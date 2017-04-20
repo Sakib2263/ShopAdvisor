@@ -106,6 +106,16 @@
                               <Font size="36.0" />
                            </font>
                         </Text>
+                        <Label fx:id="customerLabel" text="Label" textFill="#040665" StackPane.alignment="CENTER_RIGHT">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <StackPane.margin>
+                              <Insets right="40.0" />
+                           </StackPane.margin>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding></Label>
                      </children>
                   </StackPane>
                   <ImageView fitHeight="155.0" fitWidth="157.0" nodeOrientation="INHERIT" opacity="0.72" pickOnBounds="true" preserveRatio="true">
@@ -369,7 +379,7 @@
       </VBox>
    </center>
    <right>
-      <AnchorPane fx:id="rightPane" prefHeight="637.0" prefWidth="269.0" style="-fx-background-color: rgba(47, 79, 79,0.55);" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="rightPane" prefHeight="637.0" prefWidth="339.0" style="-fx-background-color: rgba(47, 79, 79,0.55);" BorderPane.alignment="CENTER">
          <children>
             <TableView fx:id="wishlistTable" prefHeight="293.0" prefWidth="249.0" style="-fx-background-color: rgba(240, 248, 255, 0.4);" tableMenuButtonVisible="false" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0">
                <columns>

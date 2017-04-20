@@ -56,7 +56,7 @@ public class Product {
     @Override
     public String toString(){
       
-       return "@" + store + " Name: " + Name + "\n";
+       return "#" + store + " Product Name: " + Name + "\n";
     }
     
       

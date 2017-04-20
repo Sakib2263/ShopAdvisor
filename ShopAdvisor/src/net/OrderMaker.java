@@ -21,11 +21,23 @@ public class OrderMaker extends Thread {
        for(Product product : pr){
            things+= "\n" + product;
        }
-       return head + person + things; 
+       return head + things; 
+    }
+    
+    String prepareItemList(ObservableList<Product> pr){
+       String things = "";
+       for(Product product : pr){
+           things+= "\n" + product;
+       }
+        return things;
     }
     
     public void run(){
-        System.out.println(createOrder(p,user));
+        TestClient tc = new TestClient("127.0.0.1", 2222);
+        tc.setClientinfo("Customer Information: \n\t" + user.toString() + "\n");
+        tc.setOrdered(prepareItemList(p));
+        tc.start();
+        //System.out.println(createOrder(p, user));
         p.clear();
     }
 }
