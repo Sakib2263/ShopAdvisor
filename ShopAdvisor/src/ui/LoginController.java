@@ -77,7 +77,7 @@ public class LoginController implements Initializable {
                 SellererUIStage.show();
             }
         } else {
-            System.err.println("returned " + isAuthenticated());
+            //to be implemented later show an error
             Alert alert = new Alert(AlertType.ERROR, "Wrong Username or Password, Try again?");
             alert.setTitle("Authentication Error");
             alert.setHeaderText("Sign in failed :(");

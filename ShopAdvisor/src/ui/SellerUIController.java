@@ -2,12 +2,11 @@ package ui;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,6 +35,10 @@ public class SellerUIController implements Initializable {
     private TableColumn<?, ?> priceColumn1;
     @FXML
     private Button updateButton;
+    @FXML
+    private Button refreshButton;
+    @FXML
+    private TextArea OrdersText;
 
     @FXML
     void signoutButtonAction(ActionEvent event) throws IOException {
@@ -55,42 +58,34 @@ public class SellerUIController implements Initializable {
             selectedDirectory.getAbsolutePath();
         }
     }
-    @FXML
-    private TextArea OrdersText;
-    @FXML
-    private Button Refresh;
-    // private String msg;
-
-    @FXML
-    public void displayTextOnButtonClick() throws FileNotFoundException {
-        Scanner s = new Scanner(new File("orders.txt")).useDelimiter("\\s+");
-        while (s.hasNext()) {
-            if (s.hasNextInt()) { // check if next token is an int
-                System.out.print(s.nextInt() + " "); // display the found integer
-            } else {
-                System.out.print(s.next() + " "); // else read the next token
+    public String getOrderText(){
+        FileReader fr = null;
+        String text = " ";
+        try {
+            fr = new FileReader("data/orders.txt");
+            Scanner s = new Scanner(fr);
+            while (s.hasNext()) {
+                text+= s.nextLine();
+                text+="\r\n";
+            }
+        } catch (FileNotFoundException ex) {
+            System.err.println(ex);
+        } finally {
+            try {
+                fr.close();
+            } catch (IOException ex) {
+                System.err.println(ex);
             }
         }
-    }
-
-    @FXML
-    public void initialize(URL url, ResourceBundle rb) {
-        try {
-            displayTextOnButtonClick();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(SellerUIController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        return text;
     }
     
-    /*@Override
+    @FXML
+    private void orderRefreshAction(ActionEvent event) {
+        OrdersText.appendText(getOrderText());
+    }
+
     public void initialize(URL url, ResourceBundle rb) {
-
-        msg="Hello World";
-        OrdersText.setText(msg);
-
-        Refresh.setOnAction(e->{
-            OrdersText.setText(msg);
-        });
-    }  
-     */
+        orderRefreshAction(new ActionEvent());
+    }
 }
