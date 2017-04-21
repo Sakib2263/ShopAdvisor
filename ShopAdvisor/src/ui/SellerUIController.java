@@ -89,7 +89,6 @@ public class SellerUIController implements Initializable {
         OrdersText.setText(msg);
 
         Refresh.setOnAction(e->{
-            msg=msg+"\nHello Again!!";
             OrdersText.setText(msg);
         });
     }  
