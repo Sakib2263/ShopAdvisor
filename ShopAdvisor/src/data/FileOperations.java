@@ -30,7 +30,7 @@ public class FileOperations {
     }
     public void addRecord(String filename, String content) {
         try {
-            FileWriter fr = new FileWriter("data/orders/" + filename + ".order", true);
+            FileWriter fr = new FileWriter("data/orders/" + filename + ".txt", true);
             fr.append(content);
             fr.append("\r\n");
             fr.flush();
