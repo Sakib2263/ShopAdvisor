@@ -14,7 +14,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import data.*;
-import net.TestServer;
 
 /**
  * FXML Controller class
@@ -35,7 +34,7 @@ public class LoginController implements Initializable {
     @FXML
     private ImageView bag;
 
-    static dataMap userInfo = new dataMap("users.csv");
+    static dataMap userInfo;
 
     @FXML
     private void signupButtonAction(ActionEvent event) throws IOException {
@@ -78,7 +77,7 @@ public class LoginController implements Initializable {
                 SellererUIStage.show();
             }
         } else {
-            //to be implemented later show an error
+            System.err.println("returned " + isAuthenticated());
             Alert alert = new Alert(AlertType.ERROR, "Wrong Username or Password, Try again?");
             alert.setTitle("Authentication Error");
             alert.setHeaderText("Sign in failed :(");
@@ -92,12 +91,11 @@ public class LoginController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        userInfo = new dataMap("users.csv");
         typeChoiceBox.setItems(FXCollections.observableArrayList("Buyer", "Seller"));
         typeChoiceBox.setValue("Buyer");
         AnimationThread t = new AnimationThread(bag);
         t.start();
-        TestServer server = new TestServer();
-        server.start();
     }
 
 }
