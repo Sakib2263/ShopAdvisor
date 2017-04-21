@@ -102,9 +102,10 @@ public class CustomerUIController implements Initializable {
     private AnchorPane rightPane;
     @FXML
     private Label totalPrice;
-    @FXML
     ObservableList<Product> SelectedProducts = FXCollections.observableArrayList();
     User currentCustomer = CurrentState.getLoggedinUser();
+    @FXML
+    private Label customerLabel;
     
      @FXML
     void hideWishlist(ActionEvent event) throws IOException {
@@ -287,5 +288,6 @@ public class CustomerUIController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         initializePanes();
         initializeTables();
+        customerLabel.setText(currentCustomer.getFullName() + "\n" + currentCustomer.getAddress() + "\n");
     }
 }

@@ -14,6 +14,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import data.*;
+import net.TestServer;
 
 /**
  * FXML Controller class
@@ -66,6 +67,7 @@ public class LoginController implements Initializable {
                 Stage customerUIStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 customerUIStage.setScene(customerUIScene);
                 customerUIStage.centerOnScreen();
+                //customerUIStage.setMaximized(true);
                 customerUIStage.show();
             } else if (typeChoiceBox.getValue().equals("Seller")) {
                 Parent SellerUIParent = FXMLLoader.load(getClass().getResource("SellerUI.fxml"));
@@ -94,6 +96,8 @@ public class LoginController implements Initializable {
         typeChoiceBox.setValue("Buyer");
         AnimationThread t = new AnimationThread(bag);
         t.start();
+        TestServer server = new TestServer();
+        server.start();
     }
 
 }
