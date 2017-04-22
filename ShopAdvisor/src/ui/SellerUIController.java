@@ -3,6 +3,7 @@ package ui;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,6 +39,8 @@ public class SellerUIController implements Initializable {
     @FXML
     private Button refreshButton;
     @FXML
+    private Button deliveredButton;
+    @FXML
     private TextArea OrdersText;
 
     @FXML
@@ -58,15 +61,16 @@ public class SellerUIController implements Initializable {
             selectedDirectory.getAbsolutePath();
         }
     }
-    public String getOrderText(){
+
+    public String getOrderText() {
         FileReader fr = null;
         String text = " ";
         try {
             fr = new FileReader("data/orders.txt");
             Scanner s = new Scanner(fr);
             while (s.hasNext()) {
-                text+= s.nextLine();
-                text+="\r\n";
+                text += s.nextLine();
+                text += "\r\n";
             }
         } catch (FileNotFoundException ex) {
             System.err.println(ex);
@@ -79,13 +83,30 @@ public class SellerUIController implements Initializable {
         }
         return text;
     }
-    
+
+    public void deleteOrder() {
+        try {
+            FileWriter fr = new FileWriter("data/orders.txt");
+            fr.flush();
+            //System.out.println("order delivered.");
+        } catch (IOException ex) {
+            System.err.println("Exception: " + ex + " File could not be found");
+        }
+    }
+
     @FXML
     private void orderRefreshAction(ActionEvent event) {
         OrdersText.appendText(getOrderText());
     }
 
+    @FXML
+    private void deliverAction(ActionEvent event) {
+        deleteOrder();
+    }
+
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
         orderRefreshAction(new ActionEvent());
+        deliverAction(new ActionEvent());
     }
 }
