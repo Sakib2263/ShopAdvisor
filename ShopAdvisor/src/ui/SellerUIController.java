@@ -66,7 +66,7 @@ public class SellerUIController implements Initializable {
         FileReader fr = null;
         String text = " ";
         try {
-            fr = new FileReader("data/orders.txt");
+            fr = new FileReader("data/orders/" + CurrentState.getLoggedinUser().getFullName() + ".txt");
             Scanner s = new Scanner(fr);
             while (s.hasNext()) {
                 text += s.nextLine();
@@ -86,8 +86,8 @@ public class SellerUIController implements Initializable {
 
     public void deleteOrder() {
         try {
-            FileWriter fr = new FileWriter("data/orders.txt");
-            fr.flush();
+            FileWriter fr = new FileWriter("data/orders/" + CurrentState.getLoggedinUser().getFullName() + ".txt");
+            //fr.flush();
             //System.out.println("order delivered.");
         } catch (IOException ex) {
             System.err.println("Exception: " + ex + " File could not be found");
@@ -96,17 +96,18 @@ public class SellerUIController implements Initializable {
 
     @FXML
     private void orderRefreshAction(ActionEvent event) {
+        OrdersText.setText("");
         OrdersText.appendText(getOrderText());
     }
 
     @FXML
     private void deliverAction(ActionEvent event) {
         deleteOrder();
+        orderRefreshAction(new ActionEvent());
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         orderRefreshAction(new ActionEvent());
-        deliverAction(new ActionEvent());
     }
 }
