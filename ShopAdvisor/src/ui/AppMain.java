@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import net.TestServer;
 
 
 public class AppMain extends Application {
@@ -14,11 +15,14 @@ public class AppMain extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
-        
         Scene scene = new Scene(root);
        
         window = stage;
         window.setTitle("ShopAdvisor");
+        
+        TestServer server = new TestServer();
+        server.setDaemon(true);
+        server.start();
        
         stage.setScene(scene);
         stage.show();
