@@ -1,55 +1,43 @@
+
 package net;
 
-//ref: https://makemobiapps.blogspot.com/p/multiple-client-server-chat-programming.html
-
-import java.io.DataInputStream;
-import java.io.PrintStream;
+import data.FileOperations;
+import data.User;
 import java.io.IOException;
-import java.net.Socket;
+import java.io.ObjectInputStream;
+import java.io.PrintStream;
 import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-/*
- * A chat server that delivers public and private messages.
- */
-public class OrderServer {
 
-  // The server socket.
+public class OrderServer extends Thread{
   private static ServerSocket serverSocket = null;
-  // The client socket.
-  private static Socket clientSocket = null;
-
-  // This chat server can accept up to maxClientsCount clients' connections.
+  private static Socket clientSocket;
   private static final int maxClientsCount = 10;
-  private static final clientThread[] threads = new clientThread[maxClientsCount];
+  private static final serverProcessorThread[] threads = new serverProcessorThread[maxClientsCount];
 
-  public static void main(String args[]) {
-
-    // The default port number.
+  @Override
+  public void run() {
     int portNumber = 2222;
-      System.out.println("Usage: java MultiThreadChatServerSync <portNumber>\n"
+      System.out.println("Usage: java MultiThreadServerSync <portNumber>\n"
           + "Now using port number=" + portNumber);
 
-    /*
-     * Open a server socket on the portNumber (default 2222). Note that we can
-     * not choose a port less than 1023 if we are not privileged users (root).
-     */
     try {
       serverSocket = new ServerSocket(portNumber);
     } catch (IOException e) {
       System.out.println(e);
     }
 
-    /*
-     * Create a client socket for each connection and pass it to a new client
-     * thread.
-     */
     while (true) {
       try {
         clientSocket = serverSocket.accept();
+          System.out.println("Client connected");
         int i = 0;
         for (i = 0; i < maxClientsCount; i++) {
           if (threads[i] == null) {
-            (threads[i] = new clientThread(clientSocket, threads)).start();
+            (threads[i] = new serverProcessorThread(clientSocket, threads)).start();
             break;
           }
         }
@@ -66,118 +54,43 @@ public class OrderServer {
   }
 }
 
-/*
- * The chat client thread. This client thread opens the input and the output
- * streams for a particular client, ask the client's name, informs all the
- * clients connected to the server about the fact that a new client has joined
- * the chat room, and as long as it receive data, echos that data back to all
- * other clients. The thread broadcast the incoming messages to all clients and
- * routes the private message to the particular client. When a client leaves the
- * chat room this thread informs also all the clients about that and terminates.
- */
-class clientThread extends Thread {
 
-  private String clientName = null;
-  private DataInputStream is = null;
-  private PrintStream os = null;
+class serverProcessorThread extends Thread {
+
+  private ObjectInputStream inStream = null;
   private Socket clientSocket = null;
-  private final clientThread[] threads;
+  private final serverProcessorThread[] threads;
   private int maxClientsCount;
+  FileOperations fop = new FileOperations();
 
-  public clientThread(Socket clientSocket, clientThread[] threads) {
+  public serverProcessorThread(Socket clientSocket, serverProcessorThread[] threads) {
     this.clientSocket = clientSocket;
     this.threads = threads;
     maxClientsCount = threads.length;
   }
 
   public void run() {
+      System.out.println("Server is processing");
     int maxClientsCount = this.maxClientsCount;
-    clientThread[] threads = this.threads;
+    serverProcessorThread[] threads = this.threads;
+    String fileName = "default";
 
     try {
-      /*
-       * Create input and output streams for this client.
-       */
-      is = new DataInputStream(clientSocket.getInputStream());
-      os = new PrintStream(clientSocket.getOutputStream());
-      String name;
+      inStream = new ObjectInputStream(clientSocket.getInputStream());
+     int id = 0;
       while (true) {
-        os.println("Enter your name.");
-        name = is.readLine().trim();
-        if (name.indexOf('@') == -1) {
-          break;
-        } else {
-          os.println("The name should not contain '@' character.");
-        }
-      }
-
-      /* Welcome the new the client. */
-      os.println("Welcome " + name
-          + " to our chat room.\nTo leave enter /quit in a new line.");
-      synchronized (this) {
-        for (int i = 0; i < maxClientsCount; i++) {
-          if (threads[i] != null && threads[i] == this) {
-            clientName = "@" + name;
+        Order o = (Order) inStream.readObject();
+        User u = o.getBuyer();
+        if(u.getType() == "quit"){
             break;
-          }
         }
-        for (int i = 0; i < maxClientsCount; i++) {
-          if (threads[i] != null && threads[i] != this) {
-            threads[i].os.println("*** A new user " + name
-                + " entered the chat room !!! ***");
-          }
-        }
+        String orderText = "";
+        orderText+= "\nOrder received: \nOrder No : " + id++;
+        orderText+="\nOrdered Product: \n" + o.getProduct();
+        orderText+= "\nOrdered by: \nName : " + u.getFullName() + "\nEmail : " + u.getEmail() + "\nAddress : " + u.getAddress();
+        System.out.println(orderText);
+        fop.addRecord(o.getProduct().getStore(),orderText );
       }
-      /* Start the conversation. */
-      while (true) {
-        String line = is.readLine();
-        if (line.startsWith("/quit")) {
-          break;
-        }
-        /* If the message is private sent it to the given client. */
-        if (line.startsWith("@")) {
-          String[] words = line.split("\\s", 2);
-          if (words.length > 1 && words[1] != null) {
-            words[1] = words[1].trim();
-            if (!words[1].isEmpty()) {
-              synchronized (this) {
-                for (int i = 0; i < maxClientsCount; i++) {
-                  if (threads[i] != null && threads[i] != this
-                      && threads[i].clientName != null
-                      && threads[i].clientName.equals(words[0])) {
-                    threads[i].os.println("<" + name + "> " + words[1]);
-                    /*
-                     * Echo this message to let the client know the private
-                     * message was sent.
-                     */
-                    this.os.println(">" + name + "> " + words[1]);
-                    break;
-                  }
-                }
-              }
-            }
-          }
-        } else {
-          /* The message is public, broadcast it to all other clients. */
-          synchronized (this) {
-            for (int i = 0; i < maxClientsCount; i++) {
-              if (threads[i] != null && threads[i].clientName != null) {
-                threads[i].os.println("<" + name + "> " + line);
-              }
-            }
-          }
-        }
-      }
-      synchronized (this) {
-        for (int i = 0; i < maxClientsCount; i++) {
-          if (threads[i] != null && threads[i] != this
-              && threads[i].clientName != null) {
-            threads[i].os.println("*** The user " + name
-                + " is leaving the chat room !!! ***");
-          }
-        }
-      }
-      os.println("*** Bye " + name + " ***");
 
       /*
        * Clean up. Set the current thread variable to null so that a new client
@@ -193,10 +106,11 @@ class clientThread extends Thread {
       /*
        * Close the output stream, close the input stream, close the socket.
        */
-      is.close();
-      os.close();
+      inStream.close();
       clientSocket.close();
-    } catch (IOException e) {
-    }
+  } catch (IOException e) {
+    } catch (ClassNotFoundException ex) {
+          Logger.getLogger(serverProcessorThread.class.getName()).log(Level.SEVERE, null, ex);
+      }
   }
 }
