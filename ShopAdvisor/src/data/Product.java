@@ -1,7 +1,8 @@
 package data;
 
+import java.io.Serializable;
 
-public class Product {
+public class Product implements Serializable{
     private int id;
     private double price;
     private String store;
@@ -56,7 +57,7 @@ public class Product {
     @Override
     public String toString(){
       
-       return "#" + store + " Product Name: " + Name + "\n";
+       return " Product Name: " + Name + "\n";
     }
     
       

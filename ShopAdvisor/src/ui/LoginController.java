@@ -14,6 +14,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import data.*;
+import net.OrderServer;
 
 /**
  * FXML Controller class
@@ -33,6 +34,8 @@ public class LoginController implements Initializable {
     private ChoiceBox typeChoiceBox;
     @FXML
     private ImageView bag;
+    @FXML
+    private TextField serverText;
 
     static dataMap userInfo;
 
@@ -59,6 +62,18 @@ public class LoginController implements Initializable {
 
     @FXML
     private void loginButtonAction(ActionEvent event) throws IOException {
+        if(serverText.getText().equals(("host"))){
+            OrderServer server = new OrderServer();
+            server.setDaemon(true);
+            server.start();
+        }
+        else if(serverText.getText().isEmpty()){
+            CurrentState.setServerIP();
+        }
+        else{
+            CurrentState.setServerIP(serverText.getText());
+        }
+        
         if (isAuthenticated()) {
             if (typeChoiceBox.getValue().equals("Buyer")) {
                 Parent customerUIParent = FXMLLoader.load(getClass().getResource("customerUI.fxml"));
@@ -83,6 +98,7 @@ public class LoginController implements Initializable {
             alert.setHeaderText("Sign in failed :(");
             alert.setGraphic(null);
             alert.show();
+            serverText.setText("");
         }
     }
 

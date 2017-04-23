@@ -123,8 +123,8 @@ public class CustomerUIController implements Initializable {
     }
     @FXML
     void orderAction(ActionEvent event) {
-        OrderMaker t = new OrderMaker(SelectedProducts, currentCustomer);
-        t.start();
+        OrderClient oc = new OrderClient(SelectedProducts, currentCustomer, CurrentState.getServerIP() , 2222);
+        oc.start();
         makewishlist();
     }
     @FXML

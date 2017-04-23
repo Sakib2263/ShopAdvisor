@@ -97,13 +97,15 @@
                </font>
             </Label>
             <Label alignment="CENTER" layoutX="3.0" layoutY="180.0" prefHeight="17.0" prefWidth="180.0" text="Make the smartest purchase" />
-            <Label alignment="CENTER" layoutX="35.0" layoutY="377.0" prefHeight="27.0" prefWidth="106.0" text="Contact us">
+            <Label alignment="CENTER" layoutX="35.0" layoutY="321.0" prefHeight="27.0" prefWidth="106.0" text="Contact us">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="32.0" layoutY="413.0" prefHeight="17.0" prefWidth="116.0" text="mock@mail.com" />
-            <Label alignment="CENTER" layoutX="38.0" layoutY="430.0" prefHeight="17.0" prefWidth="99.0" text="Phone: 8755765" />
+            <Label alignment="CENTER" layoutX="32.0" layoutY="357.0" prefHeight="17.0" prefWidth="116.0" text="mock@mail.com" />
+            <Label alignment="CENTER" layoutX="38.0" layoutY="374.0" prefHeight="17.0" prefWidth="99.0" text="Phone: 8755765" />
+            <TextField fx:id="serverText" alignment="CENTER" layoutX="55.0" layoutY="435.0" prefHeight="25.0" prefWidth="126.0" promptText="Server IP" style="-fx-background-color: rgba(0,0,0,0.1);" />
+            <Label alignment="CENTER_RIGHT" layoutY="439.0" prefHeight="17.0" prefWidth="54.0" text="Server:" />
          </children></Pane>
       <ChoiceBox fx:id="typeChoiceBox" prefHeight="25.0" prefWidth="170.0" GridPane.columnIndex="5" GridPane.rowIndex="3" />
    </children>
