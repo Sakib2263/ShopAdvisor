@@ -18,6 +18,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import data.*;
+import javafx.stage.StageStyle;
 import net.*;
 
 /**
@@ -106,6 +107,10 @@ public class CustomerUIController implements Initializable {
     User currentCustomer = CurrentState.getLoggedinUser();
     @FXML
     private Label customerLabel;
+    @FXML
+    private Button supportButton;
+    @FXML
+    private Button sellerDetailButton;
     
      @FXML
     void hideWishlist(ActionEvent event) throws IOException {
@@ -282,6 +287,26 @@ public class CustomerUIController implements Initializable {
         }
         //System.out.println("Total " + total);
         totalPrice.setText("\tTotal:\t" + total + "$");
+    }
+    
+    @FXML
+    private void supportButtonAction(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("webview.fxml"));
+        Stage webstage = new Stage();
+        webstage.initStyle(StageStyle.UTILITY);
+        webstage.initOwner((Stage)((Node) event.getSource()).getScene().getWindow());
+        WebviewController.url = "https://www.google.com";
+        CommonControll.changeScreen(fxmlLoader.load(), webstage);
+    }
+    
+     @FXML
+    private void sellerDetailButtonAction(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("webview.fxml"));
+        Stage webstage = new Stage();
+        webstage.initStyle(StageStyle.UTILITY);
+        webstage.initOwner((Stage)((Node) event.getSource()).getScene().getWindow());
+        WebviewController.url = "https://www.youtube.com";
+        CommonControll.changeScreen(fxmlLoader.load(), webstage);
     }
     
     @Override

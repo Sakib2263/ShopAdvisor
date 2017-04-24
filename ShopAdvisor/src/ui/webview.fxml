@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane id="AnchorPane" prefHeight="579.0" prefWidth="904.0" style="-fx-background-color: rgba(0,200,100,0.7);" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.WebviewController">
+   <children>
+      <WebView fx:id="web" layoutX="92.0" layoutY="71.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="50.0">
+         <effect>
+            <DropShadow />
+         </effect></WebView>
+      <Label fx:id="webaddress" layoutX="20.0" layoutY="14.0" prefHeight="29.0" prefWidth="479.0" text="Address: " />
+   </children>
+</AnchorPane>
