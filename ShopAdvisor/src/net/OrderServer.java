@@ -8,6 +8,8 @@ import java.io.ObjectInputStream;
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -77,7 +79,7 @@ class serverProcessorThread extends Thread {
 
     try {
       inStream = new ObjectInputStream(clientSocket.getInputStream());
-     int id = 0;
+      SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
       while (true) {
         Order o = (Order) inStream.readObject();
         User u = o.getBuyer();
@@ -85,7 +87,7 @@ class serverProcessorThread extends Thread {
             break;
         }
         String orderText = "";
-        orderText+= "\nOrder received: \nOrder No : " + id++;
+        orderText+= "\nOrder received: \nOrder id : " + sdf.format(Calendar.getInstance().getTime());
         orderText+="\nOrdered Product: \n" + o.getProduct();
         orderText+= "\nOrdered by: \nName : " + u.getFullName() + "\nEmail : " + u.getEmail() + "\nAddress : " + u.getAddress();
         System.out.println(orderText);

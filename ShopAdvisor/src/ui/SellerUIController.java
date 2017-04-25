@@ -1,6 +1,5 @@
 package ui;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -8,19 +7,17 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 public class SellerUIController implements Initializable {
 
@@ -41,7 +38,8 @@ public class SellerUIController implements Initializable {
     @FXML
     private Button deliveredButton;
     @FXML
-    private TextArea OrdersText;
+    private ListView<String> orderlist;
+    ObservableList<String> orders = FXCollections.observableArrayList();
 
     @FXML
     void signoutButtonAction(ActionEvent event) throws IOException {
@@ -50,31 +48,30 @@ public class SellerUIController implements Initializable {
         }
     }
 
-    @FXML
-    private void updateButtonAction(ActionEvent event) {
-        final DirectoryChooser directoryChooser
-                = new DirectoryChooser();
-        Window stage = null;
-        final File selectedDirectory
-                = directoryChooser.showDialog(stage);
-        if (selectedDirectory != null) {
-            selectedDirectory.getAbsolutePath();
-        }
-    }
-
     public String getOrderText() {
         FileReader fr = null;
         String text = " ";
         try {
             fr = new FileReader("data/orders/" + CurrentState.getLoggedinUser().getFullName() + ".txt");
+            FileWriter fw = new FileWriter("data/orders/" + CurrentState.getLoggedinUser().getFullName() + "_history.txt", true);
             Scanner s = new Scanner(fr);
+            int linecount = 0;
             while (s.hasNext()) {
                 text += s.nextLine();
                 text += "\r\n";
+                linecount++;
+                if(linecount > 9){
+                    orders.add(text);
+                    fw.append(text);
+                    text = " ";
+                    linecount = 0;
+                }
             }
         } catch (FileNotFoundException ex) {
             System.err.println(ex);
-        } finally {
+        } catch(IOException e){
+            System.err.println(e);
+        }finally {
             try {
                 fr.close();
             } catch (IOException ex) {
@@ -83,12 +80,13 @@ public class SellerUIController implements Initializable {
         }
         return text;
     }
-
-    public void deleteOrder() {
+    public void updateOrder() {
         try {
             FileWriter fr = new FileWriter("data/orders/" + CurrentState.getLoggedinUser().getFullName() + ".txt");
-            //fr.flush();
-            //System.out.println("order delivered.");
+            for(String s: orders){
+                fr.append(s);
+            }
+            fr.close();
         } catch (IOException ex) {
             System.err.println("Exception: " + ex + " File could not be found");
         }
@@ -96,14 +94,16 @@ public class SellerUIController implements Initializable {
 
     @FXML
     private void orderRefreshAction(ActionEvent event) {
-        OrdersText.setText("");
-        OrdersText.appendText(getOrderText());
+        getOrderText();
+        orderlist.setItems(orders);
     }
 
     @FXML
     private void deliverAction(ActionEvent event) {
-        deleteOrder();
-        orderRefreshAction(new ActionEvent());
+        String temp = orderlist.getSelectionModel().getSelectedItem();
+        orders.remove(temp);
+        orderlist.refresh();
+        updateOrder();
     }
 
     @Override
