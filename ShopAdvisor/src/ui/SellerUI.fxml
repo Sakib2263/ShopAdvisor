@@ -5,8 +5,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -54,16 +53,13 @@
                            </children></AnchorPane>
                     </content>
                   </Tab>
-                  <Tab text="Product List">
+                  <Tab text="Register">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView layoutX="70.0" layoutY="31.0" prefHeight="391.0" prefWidth="592.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="50.0">
-                                <columns>
-                                  <TableColumn fx:id="ProductList" prefWidth="422.0" text="Product List" />
-                                  <TableColumn fx:id="AvailabilityList" minWidth="0.0" prefWidth="295.0" text="Availability" />
-                                </columns>
-                              </TableView>
+                              <TextArea layoutX="56.0" layoutY="40.0" prefHeight="241.0" prefWidth="657.0" text="Please Register first to have your products on the list. &#10;To register, Please Visit the application website Or send Mail to the Developer's address with the list of your Products.&#10;Thank You!!&#10;&#10;Regards,&#10;Developers,&#10;ShopAdvisor.&#10;&#10;mail address :  ShopAdvisor@gmail.com" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0" />
+                              <Button fx:id="visitSiteButton" layoutX="484.0" layoutY="314.0" mnemonicParsing="false" onAction="#visitSiteButtonAction" text="Visit Website" />
+                              <Button fx:id="RegisterButton" layoutX="602.0" layoutY="314.0" mnemonicParsing="false" onAction="#RegisterButtonAction" text="Register Via Email" />
                            </children></AnchorPane>
                     </content>
                   </Tab>
