@@ -295,7 +295,7 @@ public class CustomerUIController implements Initializable {
         Stage webstage = new Stage();
         webstage.initStyle(StageStyle.UTILITY);
         webstage.initOwner((Stage)((Node) event.getSource()).getScene().getWindow());
-        WebviewController.url = "https://www.google.com";
+        WebviewController.url = "https://sites.google.com/view/shopadvisor/home";
         CommonControll.changeScreen(fxmlLoader.load(), webstage);
     }
     
@@ -305,7 +305,7 @@ public class CustomerUIController implements Initializable {
         Stage webstage = new Stage();
         webstage.initStyle(StageStyle.UTILITY);
         webstage.initOwner((Stage)((Node) event.getSource()).getScene().getWindow());
-        WebviewController.url = "https://www.youtube.com";
+        WebviewController.url = "https://sites.google.com/view/shopadvisor/seller-information?authuser=0";
         CommonControll.changeScreen(fxmlLoader.load(), webstage);
     }
     

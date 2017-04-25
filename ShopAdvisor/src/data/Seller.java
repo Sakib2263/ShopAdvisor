@@ -1,4 +1,3 @@
-
 package data;
 
 public class Seller extends User{
