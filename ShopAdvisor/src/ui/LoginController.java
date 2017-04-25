@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import data.*;
 import net.OrderServer;
+import net.SyncServer;
 
 /**
  * FXML Controller class
@@ -64,8 +65,11 @@ public class LoginController implements Initializable {
     private void loginButtonAction(ActionEvent event) throws IOException {
         if(serverText.getText().equals(("host"))){
             OrderServer server = new OrderServer();
+            SyncServer fileserver = new SyncServer();
             server.setDaemon(true);
+            fileserver.setDaemon(true);
             server.start();
+            fileserver.start();
         }
         else if(serverText.getText().isEmpty()){
             CurrentState.setServerIP();
@@ -92,7 +96,6 @@ public class LoginController implements Initializable {
                 SellererUIStage.show();
             }
         } else {
-            //to be implemented later show an error
             Alert alert = new Alert(AlertType.ERROR, "Wrong Username or Password, Try again?");
             alert.setTitle("Authentication Error");
             alert.setHeaderText("Sign in failed :(");
