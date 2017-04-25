@@ -18,6 +18,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import net.SyncClient;
+import javafx.stage.StageStyle;
 
 public class SellerUIController implements Initializable {
 
@@ -106,7 +107,31 @@ public class SellerUIController implements Initializable {
         orderlist.refresh();
         updateOrder();
     }
+    
+    @FXML
+    private Button visitSiteButton;
+    @FXML
+    private Button RegisterButton;
 
+    @FXML
+    private void visitSiteButtonAction(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("webview.fxml"));
+        Stage webstage = new Stage();
+        webstage.initStyle(StageStyle.UTILITY);
+        webstage.initOwner((Stage)((Node) event.getSource()).getScene().getWindow());
+        WebviewController.url = "https://sites.google.com/view/shopadvisor/home";
+        CommonControll.changeScreen(fxmlLoader.load(), webstage);
+    }
+        @FXML
+    private void RegisterButtonAction(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("webview.fxml"));
+        Stage webstage = new Stage();
+        webstage.initStyle(StageStyle.UTILITY);
+        webstage.initOwner((Stage)((Node) event.getSource()).getScene().getWindow());
+        WebviewController.url = "https://www.google.com/gmail/";
+        CommonControll.changeScreen(fxmlLoader.load(), webstage);
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         orderRefreshAction(new ActionEvent());
