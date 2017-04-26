@@ -15,9 +15,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import net.SyncClient;
 import javafx.stage.StageStyle;
 
 public class SellerUIController implements Initializable {
@@ -95,6 +95,7 @@ public class SellerUIController implements Initializable {
 
     @FXML
     private void orderRefreshAction(ActionEvent event) {
+        SyncClient client = new SyncClient(CurrentState.getServerIP(), CurrentState.getLoggedinUser());
         getOrderText();
         orderlist.setItems(orders);
     }
