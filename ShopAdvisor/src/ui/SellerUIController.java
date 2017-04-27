@@ -53,12 +53,12 @@ public class SellerUIController implements Initializable {
         FileReader fr = null;
         String text = " ";
         try {
-            fr = new FileReader("data/orders/" + CurrentState.getLoggedinUser().getFullName() + ".txt");
+            fr = new FileReader("data/orders/server/" + CurrentState.getLoggedinUser().getFullName() + ".txt");
             FileWriter fw = new FileWriter("data/orders/" + CurrentState.getLoggedinUser().getFullName() + "_history.txt", true);
             Scanner s = new Scanner(fr);
             int linecount = 0;
             while (s.hasNext()) {
-                text += s.nextLine();
+                text += s.nextLine().trim();
                 text += "\r\n";
                 linecount++;
                 if(linecount > 9){
@@ -70,6 +70,7 @@ public class SellerUIController implements Initializable {
             }
         } catch (FileNotFoundException ex) {
             System.err.println(ex);
+            orders.add("empty");
         } catch(IOException e){
             System.err.println(e);
         }finally {
@@ -83,7 +84,7 @@ public class SellerUIController implements Initializable {
     }
     public void updateOrder() {
         try {
-            FileWriter fr = new FileWriter("data/orders/" + CurrentState.getLoggedinUser().getFullName() + ".txt");
+            FileWriter fr = new FileWriter("data/orders/server/" + CurrentState.getLoggedinUser().getFullName() + ".txt");
             for(String s: orders){
                 fr.append(s);
             }
@@ -95,7 +96,7 @@ public class SellerUIController implements Initializable {
 
     @FXML
     private void orderRefreshAction(ActionEvent event) {
-        SyncClient client = new SyncClient(CurrentState.getServerIP(), CurrentState.getLoggedinUser());
+        new SyncClient(CurrentState.getServerIP(), CurrentState.getLoggedinUser()).start();
         getOrderText();
         orderlist.setItems(orders);
     }

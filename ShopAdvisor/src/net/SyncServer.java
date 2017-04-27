@@ -4,14 +4,21 @@ import java.net.*;
 import java.io.*;
 
 public class SyncServer extends Thread {
+    
+    private static ServerSocket serverSocket;
+    private static Socket socket;
 
     @Override
     public void run() {
+        try {
+            serverSocket = new ServerSocket(15123);
+        } catch (IOException ex) {
+            System.err.println(ex);
+        }
         while (true) {
             try {
-                ServerSocket serverSocket = new ServerSocket(15123);
-                Socket socket = serverSocket.accept();
-                new SyncServerWork(socket);
+                socket = serverSocket.accept();
+                new SyncServerWork(socket).start();
                 
             } catch (IOException ex) {
                 System.err.println(ex);
