@@ -111,6 +111,8 @@ public class CustomerUIController implements Initializable {
     private Button supportButton;
     @FXML
     private Button sellerDetailButton;
+     @FXML
+    private Button CfeedBackButton;
     
      @FXML
     void hideWishlist(ActionEvent event) throws IOException {
@@ -307,6 +309,13 @@ public class CustomerUIController implements Initializable {
         webstage.initOwner((Stage)((Node) event.getSource()).getScene().getWindow());
         WebviewController.url = "https://sites.google.com/view/shopadvisor/seller-information?authuser=0";
         CommonControll.changeScreen(fxmlLoader.load(), webstage);
+    }
+    
+    @FXML
+    void showFeedbackScreen(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FeedBack.fxml"));
+        CommonControll.changeScreen(fxmlLoader.load(), new Stage());
+                
     }
     
     @Override
