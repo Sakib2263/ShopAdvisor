@@ -10,6 +10,7 @@ public class SyncClient extends Thread{
     
     String ip;
     User seller;
+    private Socket socket;
 
     public SyncClient(String ip, User seller) {
         this.ip = ip;
@@ -23,8 +24,7 @@ public class SyncClient extends Thread{
             int filesize = 1022386;
             int bytesRead;
             int currentTot = 0;
-            User seller = null;
-            Socket socket = new Socket("127.0.0.1", 15123);
+            socket = new Socket(ip, 15123);
             
             PrintStream os = new PrintStream(socket.getOutputStream());
             String str = seller.getFullName();
@@ -35,20 +35,11 @@ public class SyncClient extends Thread{
             
             byte[] bytearray = new byte[filesize];
             InputStream is = socket.getInputStream();
-            FileOutputStream fos = new FileOutputStream("data/orders" + str + ".txt");
+            FileOutputStream fos = new FileOutputStream("data/orders/server/" + str + ".txt");
             BufferedOutputStream bos = new BufferedOutputStream(fos);
             bytesRead = is.read(bytearray, 0, bytearray.length);
-            currentTot = bytesRead;
             
-            do {
-                bytesRead
-                        = is.read(bytearray, currentTot, (bytearray.length - currentTot));
-                if (bytesRead >= 0) {
-                    currentTot += bytesRead;
-                }
-            } while (bytesRead > -1);
-            
-            bos.write(bytearray, 0, currentTot);
+            if(bytesRead >0 )bos.write(bytearray, 1, bytesRead);
             bos.flush();
             bos.close();
             socket.close();
