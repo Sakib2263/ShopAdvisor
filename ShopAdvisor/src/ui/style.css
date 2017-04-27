@@ -1,7 +1,9 @@
-
 .root {
     -fx-background-image: url("../assets/img/b1.jpg");
 }
 .Salesroot {
     -fx-background-image: url("../assets/img/bg.png");
+}
+.feedroot {
+    -fx-background-image: url("../assets/img/b1.jpg");
 }
