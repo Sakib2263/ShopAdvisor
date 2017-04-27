@@ -32,6 +32,7 @@
                      </image>
                   </ImageView>
                   <Button fx:id="signoutButton" layoutX="666.0" layoutY="11.0" mnemonicParsing="false" onAction="#signoutButtonAction" prefHeight="28.0" prefWidth="138.0" text="Sign Out" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                  <Button fx:id="SfeedBackButton" layoutX="835.0" layoutY="67.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="139.0" text="Feedbacks" />
                </children>
             </AnchorPane>
             <TabPane prefHeight="571.0" prefWidth="978.0" style="-fx-background-color: rgba(211, 211, 211, 0.25);" tabClosingPolicy="UNAVAILABLE">
