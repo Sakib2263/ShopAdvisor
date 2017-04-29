@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import javafx.collections.ObservableList;
 
@@ -34,12 +35,14 @@ public class OrderClient extends Thread {
         FileOutputStream fo = new FileOutputStream("data/orders/" + user.getUserName() + ".ser");
         outFile = new ObjectOutputStream(fo);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        ArrayList<Order> ord = new ArrayList<>();
         for(Product product : p){
             Order o = new Order(user, product, sdf.format(Calendar.getInstance().getTime()));
             outServer.writeObject(o);
             outServer.flush();
-            outFile.writeObject(o);
+            ord.add(o);
        }
+        outFile.writeObject(ord);
         //sending quit
         user.setType("quit");
         Order o = new Order(user, new Product(), "null");

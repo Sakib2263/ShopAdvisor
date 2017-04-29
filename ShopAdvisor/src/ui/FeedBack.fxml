@@ -22,7 +22,7 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="186.0" prefWidth="1249.0" spacing="20.0" style="-fx-background-color: rgba(240, 248, 255, 0.4);">
+            <HBox prefHeight="117.0" prefWidth="1131.0" spacing="20.0" style="-fx-background-color: rgba(240, 248, 255, 0.4);">
                <children>
                   <Label prefHeight="88.0" prefWidth="408.0" text="Feedback &amp; Reviews">
                      <font>
@@ -69,12 +69,7 @@
                                  <children>
                                     <VBox prefHeight="200.0" prefWidth="363.0">
                                        <children>
-                                          <Button mnemonicParsing="false" text="Submit a Review">
-                                             <VBox.margin>
-                                                <Insets left="20.0" top="20.0" />
-                                             </VBox.margin>
-                                          </Button>
-                                          <WebView prefHeight="342.0" prefWidth="359.0">
+                                          <WebView fx:id="bfcform" prefHeight="406.0" prefWidth="323.0">
                                              <VBox.margin>
                                                 <Insets bottom="20.0" left="20.0" right="20.0" top="40.0" />
                                              </VBox.margin>
@@ -93,7 +88,7 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </Label>
-                                          <WebView layoutX="19.0" layoutY="75.0" prefHeight="356.0" prefWidth="668.0" />
+                                          <WebView fx:id="review1" layoutX="-3.0" layoutY="8.0" prefHeight="423.0" prefWidth="690.0" />
                                        </children>
                                     </Pane>
                                  </children>

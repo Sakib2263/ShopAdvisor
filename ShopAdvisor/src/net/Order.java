@@ -38,5 +38,16 @@ public class Order implements Serializable{
     public void setId(String id) {
         this.id = id;
     }
+
+    public double getPrice() {
+        return product.getPrice();
+    }
+    
+    public String getName(){
+        return product.getName();
+    }
+    public String getShop(){
+        return product.getStore();
+    }
     
 }

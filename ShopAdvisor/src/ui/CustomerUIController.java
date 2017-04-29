@@ -113,6 +113,8 @@ public class CustomerUIController implements Initializable {
     private Button sellerDetailButton;
      @FXML
     private Button CfeedBackButton;
+    @FXML
+    private Button historyButton;
     
      @FXML
     void hideWishlist(ActionEvent event) throws IOException {
@@ -316,6 +318,15 @@ public class CustomerUIController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FeedBack.fxml"));
         CommonControll.changeScreen(fxmlLoader.load(), new Stage());
                 
+    }
+    
+    @FXML
+    private void showHistoryScreen(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("historyUI.fxml"));
+        Stage historystage = new Stage();
+        historystage.initStyle(StageStyle.UTILITY);
+        historystage.initOwner((Stage)((Node) event.getSource()).getScene().getWindow());
+        CommonControll.changeScreen(fxmlLoader.load(), historystage);
     }
     
     @Override

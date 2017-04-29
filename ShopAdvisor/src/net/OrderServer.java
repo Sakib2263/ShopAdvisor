@@ -9,7 +9,6 @@ import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -89,7 +88,7 @@ class serverProcessorThread extends Thread {
         orderText+= "\nOrder received: \nOrder id : " + o.getId();
         orderText+="\nOrdered Product: \n" + o.getProduct();
         orderText+= "\nOrdered by: \nName : " + u.getFullName() + "\nEmail : " + u.getEmail() + "\nAddress : " + u.getAddress();
-        System.out.println(orderText);
+        //System.out.println(orderText);
         fop.addRecord(o.getProduct().getStore(),orderText );
       }
 

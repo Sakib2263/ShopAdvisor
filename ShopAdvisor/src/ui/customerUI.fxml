@@ -69,6 +69,11 @@
                   <Insets left="3.0" top="1.0" />
                </VBox.margin>
             </Button>
+            <Button fx:id="historyButton" mnemonicParsing="false" onAction="#showHistoryScreen" prefHeight="30.0" prefWidth="196.0" text="My History" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets left="3.0" top="5.0" />
+               </VBox.margin>
+            </Button>
             <Button fx:id="signoutButton" alignment="CENTER" layoutX="13.0" layoutY="141.0" mnemonicParsing="false" onAction="#signoutButtonAction" prefHeight="33.0" prefWidth="197.0" style="-fx-border-color: #9E9E9E;" text="Sign Out" textAlignment="CENTER" textFill="#c90b0b">
                <padding>
                   <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
