@@ -7,10 +7,12 @@ import java.io.Serializable;
 public class Order implements Serializable{
     private User buyer;
     private Product product;
+    private String id;
 
-    public Order(User buyer,Product product) {
+    public Order(User buyer,Product product, String id) {
         this.buyer = buyer;
         this.product = product;
+        this.id = id;
     }
 
     public User getBuyer() {
@@ -28,6 +30,13 @@ public class Order implements Serializable{
     public void setProduct(Product product) {
         this.product = product;
     }
-    
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
     
 }

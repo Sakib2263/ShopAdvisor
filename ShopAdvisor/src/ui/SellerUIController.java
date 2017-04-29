@@ -50,7 +50,7 @@ public class SellerUIController implements Initializable {
     }
 
     public String getOrderText() {
-        FileReader fr = null;
+        FileReader fr;
         String text = " ";
         try {
             fr = new FileReader("data/orders/server/" + CurrentState.getLoggedinUser().getFullName() + ".txt");
@@ -68,17 +68,12 @@ public class SellerUIController implements Initializable {
                     linecount = 0;
                 }
             }
+            fr.close();
         } catch (FileNotFoundException ex) {
             System.err.println(ex);
             orders.add("empty");
         } catch(IOException e){
             System.err.println(e);
-        }finally {
-            try {
-                fr.close();
-            } catch (IOException ex) {
-                System.err.println(ex);
-            }
         }
         return text;
     }

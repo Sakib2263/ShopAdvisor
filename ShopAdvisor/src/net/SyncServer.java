@@ -57,6 +57,8 @@ class SyncServerWork extends Thread {
             os.write(bytearray, 0, bytearray.length);
             os.flush();
             socket.close();
+            FileWriter finish = new FileWriter("data/orders/" + name + ".txt");
+            finish.close();
             System.out.println("File transfer complete");
         } catch (IOException ex) {
             System.err.println(ex);

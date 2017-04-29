@@ -62,7 +62,7 @@ class serverProcessorThread extends Thread {
   private ObjectInputStream inStream = null;
   private Socket clientSocket = null;
   private final serverProcessorThread[] threads;
-  private int maxClientsCount;
+  private final int maxClientsCount;
   FileOperations fop = new FileOperations();
 
   public serverProcessorThread(Socket clientSocket, serverProcessorThread[] threads) {
@@ -71,10 +71,9 @@ class serverProcessorThread extends Thread {
     maxClientsCount = threads.length;
   }
 
+  @Override
   public void run() {
-      System.out.println("Server is processing");
-    int maxClientsCount = this.maxClientsCount;
-    serverProcessorThread[] threads = this.threads;
+    System.out.println("Server is processing");
     String fileName = "default";
 
     try {
@@ -83,11 +82,11 @@ class serverProcessorThread extends Thread {
       while (true) {
         Order o = (Order) inStream.readObject();
         User u = o.getBuyer();
-        if(u.getType() == "quit"){
+        if(u.getType().equals("quit")){
             break;
         }
         String orderText = "";
-        orderText+= "\nOrder received: \nOrder id : " + sdf.format(Calendar.getInstance().getTime());
+        orderText+= "\nOrder received: \nOrder id : " + o.getId();
         orderText+="\nOrdered Product: \n" + o.getProduct();
         orderText+= "\nOrdered by: \nName : " + u.getFullName() + "\nEmail : " + u.getEmail() + "\nAddress : " + u.getAddress();
         System.out.println(orderText);
