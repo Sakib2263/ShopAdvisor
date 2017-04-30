@@ -143,7 +143,7 @@
                                  <children>
                                     <AnchorPane prefWidth="226.0">
                                        <children>
-                                          <ImageView fitHeight="146.0" fitWidth="164.0" layoutX="37.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="349.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="5.0">
+                                          <ImageView fitHeight="140.0" fitWidth="158.0" layoutX="37.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="355.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="5.0">
                                              <image>
                                                 <Image url="@../assets/img/burger.png" />
                                              </image>
@@ -170,7 +170,7 @@
                                     </AnchorPane>
                                     <AnchorPane prefWidth="226.0">
                                        <children>
-                                          <ImageView fitHeight="132.0" fitWidth="233.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="363.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="5.0">
+                                          <ImageView fitHeight="103.0" fitWidth="195.0" layoutX="27.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="374.0" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="23.0">
                                              <image>
                                                 <Image url="@../assets/img/subway-national-sandwich-day-featured-image.png" />
                                              </image>
