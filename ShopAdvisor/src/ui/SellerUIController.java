@@ -39,6 +39,8 @@ public class SellerUIController implements Initializable {
     @FXML
     private Button deliveredButton;
     @FXML
+    private Button SfeedBackButton;
+    @FXML
     private ListView<String> orderlist;
     ObservableList<String> orders = FXCollections.observableArrayList();
 
@@ -125,6 +127,16 @@ public class SellerUIController implements Initializable {
         webstage.initStyle(StageStyle.UTILITY);
         webstage.initOwner((Stage)((Node) event.getSource()).getScene().getWindow());
         WebviewController.url = "https://www.google.com/gmail/";
+        CommonControll.changeScreen(fxmlLoader.load(), webstage);
+    }
+    
+    @FXML
+    private void SfeedBackButtonAction(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("webview.fxml"));
+        Stage webstage = new Stage();
+        webstage.initStyle(StageStyle.UTILITY);
+        webstage.initOwner((Stage)((Node) event.getSource()).getScene().getWindow());
+        WebviewController.url = "https://sites.google.com/view/shopadvisor/customer-feedback";
         CommonControll.changeScreen(fxmlLoader.load(), webstage);
     }
     
