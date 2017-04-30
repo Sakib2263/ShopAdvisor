@@ -17,9 +17,8 @@ public class FeedBackController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         WebEngine engine1 = bfcform.getEngine();
-        engine1.load("https://docs.google.com/forms/d/1QQNqItVJjn4H54FrqIcfCbcEY0kVNZkNgcAwRebJ1pc/viewform?edit_requested=true");
+        engine1.load("https://survey.zohopublic.com/zs/SAB0mt");
         WebEngine engine2 = review1.getEngine();
         engine2.load("https://sites.google.com/view/shopadvisor/customer-feedback");
     }
-
 }
