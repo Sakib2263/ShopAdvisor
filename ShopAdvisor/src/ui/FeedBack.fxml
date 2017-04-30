@@ -19,7 +19,7 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="117.0" prefWidth="1131.0" spacing="20.0" style="-fx-background-color: rgba(240, 248, 255, 0.4);">
+            <HBox prefHeight="95.0" prefWidth="1130.0" spacing="20.0" style="-fx-background-color: rgba(240, 248, 255, 0.4);">
                <children>
                   <Label prefHeight="88.0" prefWidth="408.0" text="Feedback &amp; Reviews">
                      <font>
@@ -32,46 +32,38 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <HBox prefHeight="176.0" prefWidth="597.0">
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to ShopAdvisor!" wrappingWidth="441.20556640625">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </Text>
-                        <ImageView fitHeight="139.0" fitWidth="136.0" nodeOrientation="INHERIT" opacity="0.72" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../assets/icon/customer.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </HBox>
-                  <Button mnemonicParsing="false" text="Back" textAlignment="CENTER">
-                     <HBox.margin>
-                        <Insets top="130.0" />
-                     </HBox.margin>
-                  </Button>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to ShopAdvisor!" wrappingWidth="445.20556640625">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="73.0" fitWidth="96.0" nodeOrientation="INHERIT" opacity="0.72" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/icon/customer.png" />
+                     </image>
+                  </ImageView>
+                  <Button mnemonicParsing="false" text="Back" textAlignment="CENTER" />
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </HBox>
-            <TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="492.0" prefWidth="762.0" style="-fx-background-color: rgba(211, 211, 211, 0.25);" tabClosingPolicy="UNAVAILABLE">
+            <TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: rgba(211, 211, 211, 0.25);" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                   <Tab text="Submit Your Review">
                      <content>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                        <AnchorPane prefHeight="480.0" prefWidth="1120.0">
                            <children>
-                              <WebView fx:id="bfcform" layoutX="286.0" layoutY="123.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="50.0" />
+                              <WebView fx:id="bfcform" layoutX="286.0" layoutY="123.0" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0" />
                            </children>
                         </AnchorPane>
                      </content>
                   </Tab>
                   <Tab text="Check Other's Review">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                      <AnchorPane prefHeight="534.0" prefWidth="1117.0">
                            <children>
-                              <WebView fx:id="review1" layoutX="238.0" layoutY="108.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="50.0" />
+                              <WebView fx:id="review1" layoutX="52.0" layoutY="29.0" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="-72.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="15.0" />
                            </children>
                         </AnchorPane>
                     </content>
