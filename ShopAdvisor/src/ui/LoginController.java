@@ -14,6 +14,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import data.*;
+import net.OrderServer;
+import net.SyncServer;
 
 /**
  * FXML Controller class
@@ -33,8 +35,10 @@ public class LoginController implements Initializable {
     private ChoiceBox typeChoiceBox;
     @FXML
     private ImageView bag;
+    @FXML
+    private TextField serverText;
 
-    static dataMap userInfo = new dataMap("users.csv");
+    static dataMap userInfo;
 
     @FXML
     private void signupButtonAction(ActionEvent event) throws IOException {
@@ -50,6 +54,7 @@ public class LoginController implements Initializable {
         User val = dataMap.recordMap.get(user);
         if (dataMap.recordMap.containsKey(user)) {
             if (val.getType().equals((String) typeChoiceBox.getValue())) {
+                CurrentState.setLoggedinUser(val);
                 return passwordInput.getText().equals(val.getPassword());
             }
         }
@@ -58,6 +63,21 @@ public class LoginController implements Initializable {
 
     @FXML
     private void loginButtonAction(ActionEvent event) throws IOException {
+        if(serverText.getText().equals(("host"))){
+            OrderServer server = new OrderServer();
+            SyncServer fileserver = new SyncServer();
+            server.setDaemon(true);
+            fileserver.setDaemon(true);
+            server.start();
+            fileserver.start();
+        }
+        else if(serverText.getText().isEmpty()){
+            CurrentState.setServerIP();
+        }
+        else{
+            CurrentState.setServerIP(serverText.getText());
+        }
+        
         if (isAuthenticated()) {
             if (typeChoiceBox.getValue().equals("Buyer")) {
                 Parent customerUIParent = FXMLLoader.load(getClass().getResource("customerUI.fxml"));
@@ -65,6 +85,7 @@ public class LoginController implements Initializable {
                 Stage customerUIStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 customerUIStage.setScene(customerUIScene);
                 customerUIStage.centerOnScreen();
+                //customerUIStage.setMaximized(true);
                 customerUIStage.show();
             } else if (typeChoiceBox.getValue().equals("Seller")) {
                 Parent SellerUIParent = FXMLLoader.load(getClass().getResource("SellerUI.fxml"));
@@ -75,12 +96,12 @@ public class LoginController implements Initializable {
                 SellererUIStage.show();
             }
         } else {
-            //to be implemented later show an error
             Alert alert = new Alert(AlertType.ERROR, "Wrong Username or Password, Try again?");
             alert.setTitle("Authentication Error");
             alert.setHeaderText("Sign in failed :(");
             alert.setGraphic(null);
             alert.show();
+            serverText.setText("");
         }
     }
 
@@ -89,6 +110,7 @@ public class LoginController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        userInfo = new dataMap("users.csv");
         typeChoiceBox.setItems(FXCollections.observableArrayList("Buyer", "Seller"));
         typeChoiceBox.setValue("Buyer");
         AnimationThread t = new AnimationThread(bag);

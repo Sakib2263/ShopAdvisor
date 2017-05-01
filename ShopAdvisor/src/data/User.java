@@ -1,6 +1,8 @@
 package data;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable{
     protected String userName, type, FullName, email, address;
     protected String password;
 
@@ -39,6 +41,13 @@ public class User {
     public String getPassword() {
         return password;
     }
-   
+
+    public void setType(String type) {
+        this.type = type;
+    }
     
+    @Override
+    public String toString(){
+        return "Name: " + FullName + ", Email: " + email + ", Address: " + address;
+    }
 }

@@ -18,6 +18,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import data.*;
+import javafx.stage.StageStyle;
+import net.*;
 
 /**
  * FXML Controller class
@@ -35,7 +37,6 @@ public class CustomerUIController implements Initializable {
     private Button hamburger_r;
     @FXML
     private Button signoutButton;
-    
     @FXML
     private TableView<Product> table11;
     @FXML
@@ -87,7 +88,7 @@ public class CustomerUIController implements Initializable {
     @FXML
     private TableColumn<Product, Double> priceColumn141;
     @FXML
-    private TableView<Product> wishlistTable; ////// whish list
+    private TableView<Product> wishlistTable;
     @FXML
     private TableColumn<Product, String> product_wishlist;
     @FXML
@@ -101,31 +102,62 @@ public class CustomerUIController implements Initializable {
     @FXML
     private AnchorPane rightPane;
     @FXML
+    private Label totalPrice;
     ObservableList<Product> SelectedProducts = FXCollections.observableArrayList();
+    User currentCustomer = CurrentState.getLoggedinUser();
+    @FXML
+    private Label customerLabel;
+    @FXML
+    private Button supportButton;
+    @FXML
+    private Button sellerDetailButton;
+     @FXML
+    private Button CfeedBackButton;
+    @FXML
+    private Button historyButton;
     
      @FXML
     void hideWishlist(ActionEvent event) throws IOException {
         rootPane.setRight(null);
         showPane(new ActionEvent());
     }
-     @FXML
-    private void wishlistAction(ActionEvent event) throws IOException {
+    @FXML
+    private void showWishlistAction(ActionEvent event) throws IOException {
         rootPane.setRight(rightPane);
-        hidePane(new ActionEvent());
+        hidePaneAction(new ActionEvent());
+    }
+    private void showWishlist(){
+        rootPane.setRight(rightPane);
+        hidePane();
     }
     @FXML
     void orderAction(ActionEvent event) {
+        OrderClient oc = new OrderClient(SelectedProducts, currentCustomer, CurrentState.getServerIP() , 2222);
+        oc.start();
+        makewishlist();
     }
     @FXML
-    private void hidePane(ActionEvent event) throws IOException {
+    private void hidePaneAction(ActionEvent event) throws IOException {
         rootPane.setLeft(null);
         hamburger_r.setVisible(true);
+    }
+    private void hidePane() {
+        rootPane.setLeft(null);
+        hamburger_r.setVisible(true);
+    }
+    
+    private boolean isWishlistVisible(){
+        if(rootPane.getRight() != null){
+            return true;
+        }
+        return false;
     }
 
     @FXML
     private void showPane(ActionEvent event) throws IOException {
         hamburger_r.setVisible(false);
         rootPane.setLeft(leftPane);
+        rootPane.setRight(null);
     } 
     @FXML
     void signoutButtonAction(ActionEvent event) throws IOException {
@@ -175,52 +207,64 @@ public class CustomerUIController implements Initializable {
         wishlistTable.setItems(SelectedProducts);
         initializeColumns(store_wishlist,price_wishlist);
         product_wishlist.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        getTotal();
     }
         @FXML
     void addToWishListAction11(ActionEvent event) {
         addSelecteditem(table11);
         makewishlist();
+        if(!isWishlistVisible())
+            showWishlist();
     }
         @FXML
     void addToWishListAction12(ActionEvent event) {
         addSelecteditem(table12);
         makewishlist();
+        if(!isWishlistVisible())
+            showWishlist();
     }
         @FXML
     void addToWishListAction13(ActionEvent event) {
         addSelecteditem(table13);
         makewishlist();
+        if(!isWishlistVisible())
+            showWishlist();
     }
         @FXML
     void addToWishListAction14(ActionEvent event) {
         addSelecteditem(table14);
         makewishlist();
+        if(!isWishlistVisible())
+            showWishlist();
     }@FXML
     void addToWishListAction111(ActionEvent event) {
         addSelecteditem(table111);
         makewishlist();
+        if(!isWishlistVisible())
+            showWishlist();
     }
         @FXML
     void addToWishListAction121(ActionEvent event) {
         addSelecteditem(table121);
         makewishlist();
+        if(!isWishlistVisible())
+            showWishlist();
     }
         @FXML
     void addToWishListAction131(ActionEvent event) {
         addSelecteditem(table131);
         makewishlist();
+        if(!isWishlistVisible())
+            showWishlist();
     }
         @FXML
     void addToWishListAction141(ActionEvent event) {
         addSelecteditem(table141);
         makewishlist();
+        if(!isWishlistVisible())
+            showWishlist();
     }
-
-    
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        initializePanes();
+    void initializeTables(){
         //Category 1
         initializeData(table11,"burger");
         initializeColumns(storeColumn11,priceColumn11);    
@@ -238,6 +282,57 @@ public class CustomerUIController implements Initializable {
         initializeData(table131,"Joystick");
         initializeColumns(storeColumn131,priceColumn131);
         initializeData(table141,"UPS");
-        initializeColumns(storeColumn141,priceColumn141);   
+        initializeColumns(storeColumn141,priceColumn141);  
+    }
+    void getTotal(){
+        double total = 0.0;
+        for(Product p : SelectedProducts){
+            total+= p.getPrice();
+        }
+        //System.out.println("Total " + total);
+        totalPrice.setText("\tTotal:\t" + total + "$");
+    }
+    
+    @FXML
+    private void supportButtonAction(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("webview.fxml"));
+        Stage webstage = new Stage();
+        webstage.initStyle(StageStyle.UTILITY);
+        webstage.initOwner((Stage)((Node) event.getSource()).getScene().getWindow());
+        WebviewController.url = "https://sites.google.com/view/shopadvisor/home";
+        CommonControll.changeScreen(fxmlLoader.load(), webstage);
+    }
+    
+     @FXML
+    private void sellerDetailButtonAction(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("webview.fxml"));
+        Stage webstage = new Stage();
+        webstage.initStyle(StageStyle.UTILITY);
+        webstage.initOwner((Stage)((Node) event.getSource()).getScene().getWindow());
+        WebviewController.url = "https://sites.google.com/view/shopadvisor/seller-information?authuser=0";
+        CommonControll.changeScreen(fxmlLoader.load(), webstage);
+    }
+    
+    @FXML
+    void showFeedbackScreen(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FeedBack.fxml"));
+        CommonControll.changeScreen(fxmlLoader.load(), new Stage());
+                
+    }
+    
+    @FXML
+    private void showHistoryScreen(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("historyUI.fxml"));
+        Stage historystage = new Stage();
+        historystage.initStyle(StageStyle.UTILITY);
+        historystage.initOwner((Stage)((Node) event.getSource()).getScene().getWindow());
+        CommonControll.changeScreen(fxmlLoader.load(), historystage);
+    }
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        initializePanes();
+        initializeTables();
+        customerLabel.setText(currentCustomer.getFullName() + "\n" + currentCustomer.getAddress() + "\n");
     }
 }

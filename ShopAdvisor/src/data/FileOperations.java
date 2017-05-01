@@ -28,5 +28,15 @@ public class FileOperations {
             System.err.println("Exception: " + ex + " File could not be found");
         } 
     }
-
+    public void addRecord(String filename, String content) {
+        try {
+            FileWriter fr = new FileWriter("data/orders/" + filename + ".txt", true);
+            fr.append(content);
+            fr.append("\r\n");
+            fr.flush();
+            //System.out.println("order added");
+        } catch (IOException ex) {
+            System.err.println("Exception: " + ex + " File could not be found");
+        } 
+    }
 }

@@ -1,7 +1,8 @@
 package data;
 
+import java.io.Serializable;
 
-public class Product {
+public class Product implements Serializable{
     private int id;
     private double price;
     private String store;
@@ -53,7 +54,11 @@ public class Product {
     public void setName(String Name) {
         this.Name = Name;
     }
+    @Override
+    public String toString(){
+      
+       return " Product Name: " + Name + "\n";
+    }
     
-    
-    
+      
 }
