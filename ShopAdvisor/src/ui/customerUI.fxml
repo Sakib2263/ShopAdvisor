@@ -411,7 +411,7 @@
                   <DropShadow />
                </effect>
             </Button>
-            <Label fx:id="totalPrice" alignment="BASELINE_RIGHT" layoutX="181.0" layoutY="335.0" prefHeight="21.0" prefWidth="151.0" text="Total:     0.0    " AnchorPane.rightAnchor="12.0">
+            <Label fx:id="totalPrice" alignment="BASELINE_RIGHT" layoutX="171.0" layoutY="340.0" prefHeight="21.0" prefWidth="181.0" text="Total:    0.0    " AnchorPane.rightAnchor="29.0">
                <font>
                   <Font size="15.0" />
                </font>
