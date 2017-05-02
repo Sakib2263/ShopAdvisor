@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
@@ -27,14 +28,6 @@ public class SellerUIController implements Initializable {
     @FXML
     private BorderPane Salesroot;
     @FXML
-    private TableView<?> table1;
-    @FXML
-    private TableColumn<?, ?> storeColumn1;
-    @FXML
-    private TableColumn<?, ?> priceColumn1;
-    @FXML
-    private Button updateButton;
-    @FXML
     private Button refreshButton;
     @FXML
     private Button deliveredButton;
@@ -43,6 +36,8 @@ public class SellerUIController implements Initializable {
     @FXML
     private ListView<String> orderlist;
     ObservableList<String> orders = FXCollections.observableArrayList();
+    @FXML
+    private Button PrintButton;
 
     @FXML
     void signoutButtonAction(ActionEvent event) throws IOException {
@@ -63,7 +58,7 @@ public class SellerUIController implements Initializable {
                 text += s.nextLine().trim();
                 text += "\r\n";
                 linecount++;
-                if(linecount > 9){
+                if (linecount > 9) {
                     orders.add(text);
                     fw.append(text);
                     text = " ";
@@ -74,15 +69,16 @@ public class SellerUIController implements Initializable {
         } catch (FileNotFoundException ex) {
             System.err.println(ex);
             orders.add("empty");
-        } catch(IOException e){
+        } catch (IOException e) {
             System.err.println(e);
         }
         return text;
     }
+
     public void updateOrder() {
         try {
             FileWriter fr = new FileWriter("data/orders/server/" + CurrentState.getLoggedinUser().getFullName() + ".txt");
-            for(String s: orders){
+            for (String s : orders) {
                 fr.append(s);
             }
             fr.close();
@@ -105,7 +101,7 @@ public class SellerUIController implements Initializable {
         orderlist.refresh();
         updateOrder();
     }
-    
+
     @FXML
     private Button visitSiteButton;
     @FXML
@@ -116,32 +112,63 @@ public class SellerUIController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("webview.fxml"));
         Stage webstage = new Stage();
         webstage.initStyle(StageStyle.UTILITY);
-        webstage.initOwner((Stage)((Node) event.getSource()).getScene().getWindow());
+        webstage.initOwner((Stage) ((Node) event.getSource()).getScene().getWindow());
         WebviewController.url = "https://sites.google.com/view/shopadvisor/home";
         CommonControll.changeScreen(fxmlLoader.load(), webstage);
     }
-        @FXML
+
+    @FXML
     private void RegisterButtonAction(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("webview.fxml"));
         Stage webstage = new Stage();
         webstage.initStyle(StageStyle.UTILITY);
-        webstage.initOwner((Stage)((Node) event.getSource()).getScene().getWindow());
+        webstage.initOwner((Stage) ((Node) event.getSource()).getScene().getWindow());
         WebviewController.url = "https://www.google.com/gmail/";
         CommonControll.changeScreen(fxmlLoader.load(), webstage);
     }
-    
+
     @FXML
     private void SfeedBackButtonAction(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("webview.fxml"));
         Stage webstage = new Stage();
         webstage.initStyle(StageStyle.UTILITY);
-        webstage.initOwner((Stage)((Node) event.getSource()).getScene().getWindow());
+        webstage.initOwner((Stage) ((Node) event.getSource()).getScene().getWindow());
         WebviewController.url = "https://sites.google.com/view/shopadvisor/customer-feedback";
         CommonControll.changeScreen(fxmlLoader.load(), webstage);
     }
     
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    private void print(Node node) {
+        System.out.println("Creating a printer job...");
+
+        PrinterJob job = PrinterJob.createPrinterJob();
+        if (job != null) {
+            System.out.println(job.jobStatusProperty().asString());
+
+            boolean printed = job.printPage(node);
+            if (printed) {
+                job.endJob();
+            } else {
+                System.out.println("Printing failed.");
+            }
+        } else {
+            System.out.println("Could not create a printer job.");
+        }
+    }
+
+    @FXML
+    private void PrintAction(ActionEvent event) {
+        String order = "\t\tShopAdvisor Order\n\nShop: " + CurrentState.getLoggedinUser().getFullName();
+        order+="\n................................................................\n\n";
+        order+=orderlist.getSelectionModel().getSelectedItem();
+        order+="\n\nPayment method: Cash on delivery\n";
+        order+="\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n";
+        Label temp = new Label(order);
+        print(temp);
+       
+}
+
+@Override
+        public void initialize(URL url, ResourceBundle rb) {
         orderRefreshAction(new ActionEvent());
     }
 }

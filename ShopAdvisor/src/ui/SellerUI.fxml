@@ -46,11 +46,12 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font></Text>
                               <Button fx:id="refreshButton" layoutX="187.0" layoutY="3.0" mnemonicParsing="false" onAction="#orderRefreshAction" text="Refresh" />
-                              <Button fx:id="deliveredButton" layoutX="249.0" layoutY="3.0" mnemonicParsing="false" onAction="#deliverAction" text="Delivered" />
+                              <Button fx:id="deliveredButton" layoutX="265.0" layoutY="3.0" mnemonicParsing="false" onAction="#deliverAction" text="Delivered" />
                               <ListView fx:id="orderlist" layoutX="27.0" layoutY="36.0" prefHeight="415.0" prefWidth="914.0" style="-fx-background-color: rgba(47, 79, 79,0.40);">
                                  <effect>
                                     <DropShadow />
                                  </effect></ListView>
+                              <Button fx:id="PrintButton" layoutX="356.0" layoutY="3.0" mnemonicParsing="false" onAction="#PrintAction" text="Print" />
                            </children></AnchorPane>
                     </content>
                   </Tab>
